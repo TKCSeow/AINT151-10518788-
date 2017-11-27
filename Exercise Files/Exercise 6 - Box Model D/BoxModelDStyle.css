@@ -1,0 +1,36 @@
+#container
+{
+  width:905px;
+  height: 500px;
+  margin: 0 auto;
+}
+#header
+{
+  width: 900px;
+  height: 70px;
+  margin: 5px;
+  background-color: grey;
+  display: block;
+}
+.leftitem
+{
+width:600px;
+height: 100px;
+background-color: grey;
+float: left;
+margin: 5px;
+
+}
+#rightmenu
+{
+  width:290px;
+  height: 430px;
+  background-color: grey;
+  float: right;
+  margin: 5px  0 5px  5px;
+  display: block;
+}
+
+#clear {
+ clear:both;
+}

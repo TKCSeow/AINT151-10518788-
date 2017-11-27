@@ -1,0 +1,8 @@
+body{font-family: "Verdana";margin:0; background:#444;border:5px;border-color: black;}
+hr {border-top: 1px solid #000}
+.wrapper{width:1200px;margin:0 auto;}
+
+/* Main content */
+#main-content{padding:10px 40px 40px 40px;background:#FFFFC0;width:1120px;margin:0 auto;clear:both}
+#main-content .wrapper:after,#main-content .wrapper:before{content:" ";display:table}
+#main-content .wrapper:after{clear:both}

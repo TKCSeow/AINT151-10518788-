@@ -1,0 +1,28 @@
+
+#menu li
+{
+display: block;
+width: 150px;
+background-color: grey;
+padding: 2px;
+margin: 2px;
+}
+
+#menu li a
+{
+  display: block;
+color: white;
+text-decoration: none;
+
+}
+
+#menu li:hover
+{
+background-color: orange;
+color: black;
+}
+
+#menu li a:hover
+{
+  color: black;
+}

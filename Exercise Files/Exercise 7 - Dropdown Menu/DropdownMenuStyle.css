@@ -1,0 +1,44 @@
+#menu li
+{
+  position: relative;
+      display: inline-block;
+width: 100px;
+background-color: grey;
+padding: 2px;
+margin: 1px;
+
+}
+
+#menu li a
+{
+  display: block;
+color: white;
+text-decoration: none;
+text-align: center;
+
+}
+
+#menu li ul
+{
+display: none;
+
+
+}
+
+#menu li:hover li
+{
+  display: block;
+}
+
+
+#menu li:hover
+{
+background-color: orange;
+color: black;
+}
+
+
+  #clear
+  {
+    clear: both;
+  }
