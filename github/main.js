@@ -109,12 +109,12 @@ function ChangeText(index)
 
 function ifs(index)
 {
-  if (stats[1].Week == 10 && stats[0].Money >= 1000)
+  if (stats[1].week == 10 && stats[0].Money >= 1000)
   {
     startingTown[16].choices[4].index = 37;
   }
 
-  if (stats[1].Week == 10 && stats[0].Money < 1000)
+  if (stats[1].week == 10 && stats[0].Money < 1000)
   {
     startingTown[16].choices[4].index = 38;
   }
