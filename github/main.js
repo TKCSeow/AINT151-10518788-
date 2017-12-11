@@ -74,6 +74,7 @@ function OnGameLoad()
 
 	 InventoryText();
 	 PricesText();
+  
 
    ChangeText(0);
 
@@ -83,6 +84,7 @@ function ChangeText(index)
 {
 	Transactions(index);
 	WeekEvents(index);
+  MarketNewsUpdate();
 	ifs(index);
 
 	UpdateInventory();
@@ -486,4 +488,14 @@ function UpdatePrices()
 	document.getElementById(sell).innerHTML = "Sell: " + String(Inventory[i].sellPrice)
 
 	}
+}
+
+
+function MarketNewsUpdate()
+{
+if (stats[1].week < marketNews.length)
+{
+  document.getElementById('headline').innerHTML = marketNews[stats[1].week - 1].headline;
+  document.getElementById('article').innerHTML = marketNews[stats[1].week - 1].article;
+}
 }

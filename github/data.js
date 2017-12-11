@@ -560,6 +560,6 @@ var marketNews = [
 },
 {
   headline:'Tension Rises',
-  article:'Relationship with the neighbouring country has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
+  article:'Relationships with the neighbouring country has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
 },
 ]
