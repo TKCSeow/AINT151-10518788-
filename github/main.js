@@ -130,6 +130,7 @@ function ifs(index)
 	if (index == 0 )
 	{
 		stats[0].Money = 500;
+    stats[1].week = 1;
 	}
 
 
