@@ -521,6 +521,29 @@ var startingTown = [
   ]
 },
 
+{
+  title:'The Dream',
+  text:'You have opened a shop and are living the dream',
+  choices:[
+    {
+      text:'Finish',
+      index:0
+    },
+
+  ]
+},
+{
+  title:'Maybe the next life',
+  text:'You haven\'t opened a shop. maybe in a next life.',
+  choices:[
+    {
+      text:'Finish',
+      index:0
+    },
+
+  ]
+},
+
 ]
 
 
