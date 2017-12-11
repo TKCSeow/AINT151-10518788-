@@ -555,12 +555,12 @@ var marketNews = [
   article:'Due to lack of rain, wheat is forecasted to be under supplied.',
 },
 {
-  headline:'No Major Changes',
-  article:'Everything is looking good',
+  headline:'Pesticide Horror!',
+  article:'Supplies of pesticide have found to been tampered! The Royals suspects neighbouring country.',
 },
 {
   headline:'Tension Rises',
-  article:'Relationships with the neighbouring country has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
+  article:'Tensions with the neighbouring country has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
 },
 {
   headline:'War Declared!',
