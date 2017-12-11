@@ -16,61 +16,83 @@ function StorePlayerData()
 	localStorage.setItem("playername", name);
 
 
-	var goods = document.forms[0]["goods"].value;
+	var goods = document.forms[0]["Perk"].value;
 
-	localStorage.setItem("goods", goods);
+	localStorage.setItem("Perk", goods);
 
 
 }
 
-var goodsArray = [
-	'Food',
-	'Materials',
-	'Weapons'
+var perkArray = [
+	'No Perk',
+	'Barterer',
+	'Salesman'
 ];
 
 
 function OnLoad()
 {
 	myFunction();
-	for(var i = 0; i < goodsArray.length; i++)
+	for(var i = 0; i < perkArray.length; i++)
 	{
- 		var tag = "<option value='" + i + "'>" + goodsArray[i] + "</option>";
- 		document.forms[0]["goods"].innerHTML += tag;
+ 		var tag = "<option value='" + i + "'>" + perkArray[i] + "</option>";
+ 		document.forms[0]["Perk"].innerHTML += tag;
 	}
 }
 
 
-function SelectGoods()
+function SelectPerk()
 {
 	var selection = 0
-	selection = document.forms[0]["goods"].value
+	selection = document.forms[0]["Perk"].value
 
 
   if (selection == 0)
   {
-    document.getElementById("currentGoods").innerHTML = "Food";
+    document.getElementById("currentPerk").innerHTML = "No Perk";
   }
   else if (selection == 1)
   {
-    document.getElementById("currentGoods").innerHTML = "Materials";
+    document.getElementById("currentPerk").innerHTML = "10% discount on all purchases (applied on purchase)";
   }
   else
   {
-    document.getElementById("currentGoods").innerHTML = "Weapons";
+    document.getElementById("currentPerk").innerHTML = "10% discount on all sold items (applied on sale)";
+  }
+}
+
+function DisplayPerk(perk)
+{
+	var selection = 0
+	selection = perk
+
+
+  if (selection == 0)
+  {
+    document.getElementById("PlayerName").innerHTML += "";
+  }
+  else if (selection == 1)
+  {
+    document.getElementById("PlayerName").innerHTML += " (Barterer)";
+  }
+  else
+  {
+    document.getElementById("PlayerName").innerHTML += " (Salesman)";
   }
 }
 
 function OnGameLoad()
 {
 	var playerName = localStorage.getItem("playername");
-  var goods = localStorage.getItem("goods");
+  var perk = localStorage.getItem("Perk");
 
 	 document.getElementById('PlayerName').innerHTML = playerName
 
 	 document.getElementById('headline').innerHTML = marketNews[0].headline;
 
 	 document.getElementById('article').innerHTML = marketNews[0].article;
+
+   DisplayPerk(perk);
 
 	 InventoryText();
 	 PricesText();
