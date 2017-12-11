@@ -41,7 +41,7 @@ var Inventory = [
   {
     itemName: 'Weapons',
     amount: 0,
-    buyPrice:300,
+    buyPrice:250,
     sellPrice:450,
   },
 ]
@@ -49,7 +49,7 @@ var Inventory = [
 var startingTown = [
 {
   title:'Intro',
-  text:'You have always wanted to open your own shop. </br>You have 500 Dauns to pursue the dream. First amass 1,000 Dauns. You can only make only purchase per week, but you can sell how many times you want.',
+  text:'You have always wanted to open your own shop. </br>You have 100 Dauns to pursue the dream. Amass 1,000 Dauns in 10 weeks. You can only make only purchase per week, but you can sell how many times you want.',
   choices:[
     {
       text:'Next',
@@ -523,7 +523,7 @@ var startingTown = [
 
 {
   title:'The Dream',
-  text:'You have opened a shop and are living the dream',
+  text:'You have opened a shop and now living the dream',
   choices:[
     {
       text:'Finish',
@@ -533,8 +533,8 @@ var startingTown = [
   ]
 },
 {
-  title:'Maybe the next life',
-  text:'You haven\'t opened a shop. maybe in a next life.',
+  title:'Maybe the Next Life',
+  text:'You weren\'t able to open a shop. Maybe in a next life.',
   choices:[
     {
       text:'Finish',
@@ -561,5 +561,9 @@ var marketNews = [
 {
   headline:'Tension Rises',
   article:'Relationships with the neighbouring country has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
+},
+{
+  headline:'War Declared!',
+  article:'War has broken out with the neighbouring country.',
 },
 ]

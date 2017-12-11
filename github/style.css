@@ -1,16 +1,16 @@
 body{font-family: "Times New Roman";margin:0; background:#000; color:#fff;}
 hr {border-color: white;width: 80%x;margin:0 auto;}
-.wrapper{height: 100%;width:1000px;margin:0 auto;max-width: 950px;}
+.wrapper{height: 100%;margin:0 auto;width: 990px;}
 .wrapper-nav{z-index: 99;height: 70px;width:100%;margin:0 auto;}
 .wrapper-maingame{float: left;width:100%;margin:0 auto;max-width: 700px;margin-bottom: 20px;}
 .wrapper-stats{float:left;width:100%;margin:0;height: 180px;max-width: 700px;}
 .image {border: 4px solid white;width:100%;margin:0 auto;}
 
-.wrapper-side{float: right;width: 240px;height: 620px;}
-.wrapper-side1{float: right;width: 240px;height: 180px;}
+.wrapper-side{margin:0 auto;float: right;width: 280px;height: 700px;background: #4d4d4d;border: 4px solid White;}
+.wrapper-side1{margin:0 auto;float: right;width: 280px;height: 160px;background: #4d4d4d;border: 4px solid White;}
 
-.side{list-style: none;margin:0 auto;height: 100%;padding:20px 40px 20px 40px;background: #4d4d4d;max-width: 240px;width: 80%; border: 4px solid White;}
-.side1{list-style: none;margin:0 auto;height: 120px;padding:20px 40px 20px 40px;background: #4d4d4d;width: 80%; border: 4px solid White;}
+.side{list-style: none;margin:0 auto;margin-top: 20px;height: 100%;max-width: 240px;width: 80%; height: 80%}
+.side1{list-style: none;margin:0 auto;margin-top: 20px;height: 120px;width: 80%; height: 80%}
 
 .nav {width: 100%;overflow: hidden;background-color: #4d4d4d;border-bottom: 4px solid White;}
 .nav a {display: inline-block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;font-size: 20px;}

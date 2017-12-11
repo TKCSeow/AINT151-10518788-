@@ -74,7 +74,7 @@ function OnGameLoad()
 
 	 InventoryText();
 	 PricesText();
-  
+
 
    ChangeText(0);
 
@@ -131,8 +131,9 @@ function ifs(index)
 
 	if (index == 0 )
 	{
-		stats[0].Money = 500;
+		stats[0].Money = 100;
     stats[1].week = 1;
+    ResetPrices();
 	}
 
 
@@ -176,11 +177,9 @@ function Transactions(index)
 		stats[0].Money = stats[0].Money + 210;
 	}
 
-
 HunterTransactions(index);
 FarmerTransactions(index);
 BlacksmithTransactions(index);
-
 }
 
 
@@ -407,24 +406,19 @@ function WeekEvents()
 {
 	if (stats[1].week == 2)
 	{
-		Inventory[0].sellPrice = 100;
-		Inventory[0].buyPrice = 50;
-
-		document.getElementById('headline').innerHTML = marketNews[1].headline;
-
- 	 	document.getElementById('article').innerHTML = marketNews[1].article;
-
+		Inventory[3].sellPrice = 90;
+		Inventory[3].buyPrice = 50;
 	}
 
 	if (stats[1].week == 3)
 	{
-		Inventory[2].sellPrice = 40;
-		Inventory[2].buyPrice = 50;
-
-		document.getElementById('headline').innerHTML = marketNews[2].headline;
-
- 	 	document.getElementById('article').innerHTML = marketNews[2].article;
-
+		Inventory[2].sellPrice = 110;
+		Inventory[2].buyPrice = 60;
+	}
+  if (stats[1].week == 4)
+	{
+		Inventory[5].sellPrice = 800;
+		Inventory[5].buyPrice = 500;
 	}
 }
 
@@ -490,12 +484,27 @@ function UpdatePrices()
 	}
 }
 
-
 function MarketNewsUpdate()
 {
-if (stats[1].week < marketNews.length)
-{
-  document.getElementById('headline').innerHTML = marketNews[stats[1].week - 1].headline;
-  document.getElementById('article').innerHTML = marketNews[stats[1].week - 1].article;
+  if (stats[1].week <= marketNews.length)
+  {
+    document.getElementById('headline').innerHTML = marketNews[stats[1].week - 1].headline;
+    document.getElementById('article').innerHTML = marketNews[stats[1].week - 1].article;
+  }
 }
+
+function ResetPrices()
+{
+  Inventory[0].buyPrice = 30;
+  Inventory[0].sellPrice = 70;
+  Inventory[1].buyPrice = 30;
+  Inventory[1].sellPrice = 60;
+  Inventory[2].buyPrice = 10;
+  Inventory[2].sellPrice = 40;
+  Inventory[3].buyPrice = 15;
+  Inventory[3].sellPrice = 50;
+  Inventory[4].buyPrice = 120;
+	Inventory[4].sellPrice = 200;
+  Inventory[5].buyPrice = 250;
+	Inventory[5].sellPrice = 450;
 }
