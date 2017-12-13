@@ -146,55 +146,39 @@ function ifs(index)
 
 
 
-  if (index == 34)
+  if (index == 34 || index == 13)
 	{
 		stats[1].week += 1;
 	}
 
-	if (index == 0 )
+	if (index == 0)
 	{
-		stats[0].Money = 100;
-    stats[1].week = 1;
+		stats[0].Money = 300;
     ResetPrices();
 	}
-
-
-
-	if (index == 9 )
-	{
-		startingTown[8].choices[1] = {text:'???', index:11}
-		startingTown[11].choices[1] = {text:' ', index:13}
-		startingTown[13] = {title:'Secret', text:'You find 5,000 Dauns', choices:[{text:'Finish',index:0}]}
-
-	}
-
-
 
 	if (index == 16)
 	{
 		startingTown[26].choices[6] = {text:'Back', index:16};
 	}
 
-
-
-
 }
 
 function Transactions(index)
 {
-	if (index == 10 || index == 11 )
+	if (index == 8)
 	{
-		stats[0].Money = stats[0].Money - 60;
+		stats[0].Money = stats[0].Money - 30;
 
 	}
 
-	if (index == 5 || index == 6)
+	if (index == 5)
 	{
 		stats[0].Money = stats[0].Money - 150;
 	}
 
 
-	if (index == 15)
+	if (index == 11)
 	{
 		stats[0].Money = stats[0].Money + 210;
 	}
@@ -426,21 +410,21 @@ function BlacksmithTransactions(index)
 
 function WeekEvents()
 {
-	if (stats[1].week == 2)
-	{
-		Inventory[3].sellPrice = 90;
-		Inventory[3].buyPrice = 50;
-	}
-
 	if (stats[1].week == 3)
 	{
-		Inventory[2].sellPrice = 110;
-		Inventory[2].buyPrice = 60;
+		Inventory[3].buyPrice = 50;
+    Inventory[3].sellPrice = 90;
 	}
-  if (stats[1].week == 4)
+
+	if (stats[1].week == 5)
 	{
-		Inventory[5].sellPrice = 800;
+		Inventory[2].buyPrice = 60;
+    Inventory[2].sellPrice = 110;
+	}
+  if (stats[1].week == 10)
+	{
 		Inventory[5].buyPrice = 500;
+    Inventory[5].sellPrice = 800;
 	}
 }
 
@@ -508,10 +492,10 @@ function UpdatePrices()
 
 function MarketNewsUpdate()
 {
-  if (stats[1].week <= marketNews.length)
+  if (stats[1].week < marketNews.length)
   {
-    document.getElementById('headline').innerHTML = marketNews[stats[1].week - 1].headline;
-    document.getElementById('article').innerHTML = marketNews[stats[1].week - 1].article;
+    document.getElementById('headline').innerHTML = marketNews[stats[1].week].headline;
+    document.getElementById('article').innerHTML = marketNews[stats[1].week].article;
   }
 }
 

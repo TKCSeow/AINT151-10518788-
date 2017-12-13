@@ -1,14 +1,14 @@
 
 #container
 {
-  width:1000px;
-  height: 700px;
+  width:900px;
+  height: 620px;
 }
 #header
 {
   width: 900px;
   height: 70px;
-  margin: 5px ;
+  margin-bottom: 10px ;
   background-color: grey;
   display: block;
 }
@@ -18,7 +18,7 @@ width:245px;
 height: 500px;
 background-color: grey;
 float: left;
-margin: 5px ;
+margin-right: 5px ;
 display: block;
 }
 #maincontent
@@ -27,7 +27,7 @@ display: block;
   height: 500px;
   background-color: grey;
   float: left;
-  margin: 5px ;
+  margin: 0px 5px;
   display: block;
 }
 #rightmenu
@@ -36,7 +36,7 @@ display: block;
   height: 500px;
   background-color: grey;
   float: left;
-  margin: 5px ;
+  margin-left: 5px ;
   display: block;
 }
 #clear {
@@ -47,7 +47,7 @@ display: block;
   width:900px;
   height: 30px;
   background-color: grey;
-  margin: 5px ;
+  margin-top: 10px ;
   float:left;
   display: block;
 

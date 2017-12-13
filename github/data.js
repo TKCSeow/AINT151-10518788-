@@ -3,7 +3,7 @@ var stats = [
     Money: 300
   },
   {
-    week:1
+    week:0
   }
 ]
 
@@ -41,35 +41,20 @@ var Inventory = [
   {
     itemName: 'Weapons',
     amount: 0,
-    buyPrice:250,
-    sellPrice:450,
+    buyPrice:1000,
+    sellPrice:1200,
   },
 ]
 
 var startingTown = [
 {
   title:'Intro',
-  text:'You have always wanted to open your own shop. </br>You have 100 Dauns to pursue the dream. Amass 1,000 Dauns in 10 weeks. You can only make only purchase per week, but you can sell how many times you want.',
-  choices:[
-    {
-      text:'Next',
-      index:16
-    },
-    {
-      text:'',
-      index:1
-    },
-  ]
-},
-
-{
-  title:'Intro',
-  text:'First you need to register at the Merchant Guild to become a merchant. The Merchant Guild will act as the hub of operation as you do not have a shop yet.',
+  text:'You have always wanted to open your own shop. </br>You have 300 Dauns to pursue the dream. Amass 10,000 Dauns in 30 weeks. <br>First you need to register with the Merchant Guild',
   choices:[
     {
       text:'To the Merchant Guild',
-      index:2
-    }
+      index:1
+    },
   ]
 },
 
@@ -79,7 +64,7 @@ var startingTown = [
   choices:[
     {
       text:'Show him your money',
-      index:3
+      index:2
     }
   ]
 },
@@ -88,12 +73,22 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'<i>Man: Ha! You just scrapped the minimum amount. Well, a pass is a pass. I\'ll sort out your membership.</i><br><br>The man hands you your membership documents.<br>Now you need a horse and cart to carry around your stock. Head over to the stables.',
+  text:'<i>Man: Ha! You just scrapped the minimum amount. Well, a pass is a pass. I\'ll sort out your membership.</i><br><br>The man hands you your membership documents.',
+  choices:[
+    {
+      text:'Next',
+      index:3
+    }
+  ]
+},
+{
+  title:'Merchant Guild',
+  text:'Now you need a horse and cart to carry around your stock. Head over to the stables.',
   choices:[
     {
       text:'To the Stables',
       index:4
-    }
+    },
   ]
 },
 {
@@ -101,13 +96,9 @@ var startingTown = [
   text:'The stable master says he\'ll offer you 150 Dauns.',
   choices:[
     {
-      text:'Accept',
+      text:'Buy',
       index:5
     },
-    {
-      text:'Barter [3]',
-      index:6
-    }
   ]
 },
 
@@ -116,19 +107,8 @@ var startingTown = [
   text:'You paid 150 Dauns for the horse and cart. You head back to the Merchant Guild to register your horse.',
   choices:[
     {
-      text:'Back to the Merchant Guild',
-      index:7
-    }
-  ]
-},
-
-{
-  title:'Stables',
-  text:'You failed the barter. You pay up 150 Dauns for the horse and cart. You head back to the Merchant Guild to register your horse.',
-  choices:[
-    {
-      text:'Back to the Merchant Guild',
-      index:7
+      text:'Next',
+      index:6
     }
   ]
 },
@@ -139,53 +119,60 @@ var startingTown = [
   choices:[
     {
       text:'To the hunter',
-      index:8
+      index:7
     }
   ]
 },
 {
   title:'Hunter',
-  text:'You can purchases goods from many types of vendors. <br> For now, purchase 70 wolf pelts which cost 60 Duans.',
+  text:'You can purchase goods from different types of suppliers. However, you can only make one purchase per week. <br>Check the Prices list to see what the buy and sell prices of goods are at.<br> For now, purchase Animal Pelts which cost 30 Duans.',
   choices:[
     {
-      text:'Buy the wolf pelts',
-      index:10
+      text:'Buy Animal Pelts',
+      index:8
     },
+  ]
+},
+
+{
+  title:'Hunter',
+  text:'Animal Pelts purchased.<br>',
+  choices:[
     {
-      text:' ',
+      text:'Next',
       index:9
-    },
-  ]
-},
-
-{
-  title:'Hunter',
-  text:'You find a bundle of wheat. It doesn\'t seem to belong to anyone. <br> However, you feel something special about it. You decide to pick it up.',
-  choices:[
-    {
-      text:'Back',
-      index:8
     }
   ]
 },
 
 {
-  title:'Hunter',
-  text:'You pay for the pelts and leave for the Merchant Guild to rest for the night.',
+  title:'Merchant Guild',
+  text:'Now you have some goods. You now need to sell them off. Head to the Trading Company',
   choices:[
     {
-      text:'To the Merchant Guild',
-      index:12
+      text:'To the Trading Comapany',
+      index:10
     }
   ]
 },
 
 {
-  title:'Hunter',
-  text:'You notice a pile of apples to the corner. You can tell they are of good quality and bring up it with hunter. <br><br> <i>Hunter: Haha! You noticed them?! They\'re actually home grown by my wife. They\'re the best you can get. <br> Hey, how about I throw in half of what I have here. Take it as a gesture of good will.</i><br><br>You pay for the pelts and load them onto the cart with the apples. You decide to keep the apples for yourself<br>You thank the hunter and leave for the Merchant Guild to rest for the night.',
+  title:'Trading Company',
+  text:'The Trading Company is where you can sell your goods. You can sell as many times you want each week, or not sell at all and sell at a later date. Here you will always sell at a profit but be careful, there are exceptions. Prices can fluctuate, meaning they can rise or drop. <br>Check the Market News every week to make an informed choice.',
   choices:[
     {
-      text:'To the Merchant Guild',
+      text:'Sell Animal Pelts',
+      index:11
+    }
+  ]
+},
+
+{
+  title:'Trading Company',
+  text:'Animal Pelts Sold',
+  choices:[
+    {
+      text:'Next',
       index:12
     }
   ]
@@ -193,10 +180,10 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'You rest up for the night',
+  text:'There is nothing left to do now. So rest up for the next week',
   choices:[
     {
-      text:'Finish',
+      text:'Rest',
       index:13
     }
   ]
@@ -204,32 +191,32 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'You now need to sell off your goods. Head to the Trading Company.',
+  text:'Rested',
   choices:[
     {
-      text:'To the Trading Company',
+      text:'Next',
       index:14
     }
   ]
 },
 
 {
-  title:'Trading Company',
-  text:'The Trading Company is where you can sell your goods. Here you will always sell at a profit but be careful, there are exceptions. Check the Market News to make the best choices.',
+  title:'Merchant Guild',
+  text:'It is now the next week. Be sure to check on any price changes and the news.<br> Remember, you don\'t have to sell every week.',
   choices:[
     {
-      text:'Sell your wolf pelts (210 Dauns)',
+      text:'Next',
       index:15
     }
   ]
 },
 
 {
-  title:'Trading Company',
-  text:'Now, make 1000 Daun',
+  title:'Merchant Guild',
+  text:'From now on you are on your own. You have 40 weeks to make 10,000 Dauns to fulfil your dream of owning a shop.',
   choices:[
     {
-      text:'Back to Merchant Guild',
+      text:'Next',
       index:16
     }
   ]
@@ -378,7 +365,7 @@ var startingTown = [
 },
 {
   title:'Trading Company',
-  text:'',
+  text:'What to sell?',
   choices:[
     {
       text:'Sell Animal Pelts',
@@ -406,7 +393,7 @@ var startingTown = [
     },
     {
       text:'Back',
-      index:26
+      index:16
     },
   ]
 },
@@ -550,20 +537,48 @@ var startingTown = [
 
 
 var marketNews = [
-{
-  headline:'Dry Season',
-  article:'Due to lack of rain, wheat is forecasted to be under supplied.',
-},
-{
-  headline:'Pesticide Horror!',
-  article:'Supplies of pesticide have found to been tampered! The Royals suspects neighbouring country.',
-},
-{
-  headline:'Tension Rises',
-  article:'Tensions with the neighbouring country has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
-},
-{
-  headline:'War Declared!',
-  article:'War has broken out with the neighbouring country.',
-},
+  {
+    headline:'Early Winter',
+    article:'Winter has come early in the North.',
+  },
+  {
+    headline:'Dry Season',
+    article:'Due to lack of rain, wheat is forecasted to be under supplied.',
+  },
+  {
+    headline:'The King\'s Passing',
+    article:'The King\'s death has brought grief throughout the Kingdom. His funeral will be in 4 weeks',
+  },
+  {
+    headline:'Pesticide Horror!',
+    article:'Supplies of pesticide have found to been tampered! The Officals suspects the West.',
+  },
+  {
+    headline:'The Royal Succession',
+    article:'The King\'s oldest son is to succeed the throne.',
+  },
+  {
+    headline:'Tension Rises',
+    article:'Tensions with the West has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
+  },
+  {
+    headline:'King\'s Funeral',
+    article:'Today we honour the passing of the former king.',
+  },
+  {
+    headline:'Kingdom Cut Ties with the West',
+    article:'Trade with the west has been cut, affecting exports and imports.',
+  },
+  {
+    headline:'New King\'s Coronation Ceremony Announced',
+    article:'The New King will be crowned in ',
+  },
+  {
+    headline:'',
+    article:'The New King will be crowned in ',
+  },
+  {
+    headline:'War Declared!',
+    article:'War has broken out with the neighbouring country.',
+  },
 ]
