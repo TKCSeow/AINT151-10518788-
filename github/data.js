@@ -574,10 +574,6 @@ var marketNews = [
     article:'The New King will be crowned in 4 weeks',
   },
   {
-    headline:'',
-    article:'The New King will be crowned in weeks',
-  },
-  {
     headline:'War Declared!',
     article:'War has broken out with the neighbouring country.',
   },
