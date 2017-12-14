@@ -571,11 +571,11 @@ var marketNews = [
   },
   {
     headline:'New King\'s Coronation Ceremony Announced',
-    article:'The New King will be crowned in ',
+    article:'The New King will be crowned in 4 weeks',
   },
   {
     headline:'',
-    article:'The New King will be crowned in ',
+    article:'The New King will be crowned in weeks',
   },
   {
     headline:'War Declared!',

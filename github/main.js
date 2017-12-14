@@ -180,7 +180,7 @@ function Transactions(index)
 
 	if (index == 11)
 	{
-		stats[0].Money = stats[0].Money + 210;
+		stats[0].Money = stats[0].Money + 70;
 	}
 
 HunterTransactions(index);
@@ -421,7 +421,22 @@ function WeekEvents()
 		Inventory[2].buyPrice = 60;
     Inventory[2].sellPrice = 110;
 	}
-  if (stats[1].week == 10)
+  if (stats[1].week == 7)
+	{
+    Inventory[0].buyPrice = 30;
+    Inventory[0].sellPrice = 50;
+    Inventory[1].buyPrice = 30;
+    Inventory[1].sellPrice = 50;
+    Inventory[2].buyPrice = 10;
+    Inventory[2].sellPrice = 30;
+    Inventory[3].buyPrice = 15;
+    Inventory[3].sellPrice = 40;
+    Inventory[4].buyPrice = 140;
+  	Inventory[4].sellPrice = 180;
+    Inventory[5].buyPrice = 300;
+  	Inventory[5].sellPrice = 400;
+	}
+  if (stats[1].week == 9)
 	{
 		Inventory[5].buyPrice = 500;
     Inventory[5].sellPrice = 800;
@@ -517,9 +532,30 @@ function ResetPrices()
 
 function ChangeImage(index)
 {
-  if (index == 16)
+  if (index == 16  || index == 33)
   {
     var tag = "<img src=\"img/FM.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
   }
+  else if (index == 17)
+  {
+    var tag = "<img src=\"img/FH.png\" class=\"image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
+  else if (index == 20)
+  {
+    var tag = "<img src=\"img/FF.png\" class=\"image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
+  else if (index == 23)
+  {
+    var tag = "<img src=\"img/FB.png\" class=\"image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
+  else if (index == 26)
+  {
+    var tag = "<img src=\"img/FT.png\" class=\"image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
+
 }
