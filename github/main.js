@@ -96,7 +96,7 @@ function OnGameLoad()
 
 	 InventoryText();
 	 PricesText();
-   ChangeImage();
+
 
    ChangeText(0);
 
@@ -108,7 +108,7 @@ function ChangeText(index)
 	WeekEvents(index);
   MarketNewsUpdate();
 	ifs(index);
-
+  ChangeImage(index);
 	UpdateInventory();
 
 	UpdatePrices();
@@ -515,11 +515,11 @@ function ResetPrices()
 	Inventory[5].sellPrice = 450;
 }
 
-function ChangeImage()
+function ChangeImage(index)
 {
-
-var tag = "<img src=\"img/FM.png\" class=\"image\">"
-
-document.getElementById('Image').innerHTML = tag;
-
+  if (index == 16)
+  {
+    var tag = "<img src=\"img/FM.png\" class=\"image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
 }
