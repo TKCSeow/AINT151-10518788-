@@ -96,7 +96,7 @@ function OnGameLoad()
 
 	 InventoryText();
 	 PricesText();
-
+   ChangeImage();
 
    ChangeText(0);
 
@@ -513,4 +513,13 @@ function ResetPrices()
 	Inventory[4].sellPrice = 200;
   Inventory[5].buyPrice = 250;
 	Inventory[5].sellPrice = 450;
+}
+
+function ChangeImage()
+{
+
+var tag = "<img src=\"img/FM.png\" class=\"image\">"
+
+document.getElementById('Image').innerHTML = tag;
+
 }
