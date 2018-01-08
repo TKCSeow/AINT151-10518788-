@@ -29,7 +29,7 @@ var Inventory = [
   {
     itemName: 'Wheat',
     amount: 0,
-    buyPrice:15,
+    buyPrice:20,
     sellPrice:50,
   },
   {
@@ -125,7 +125,7 @@ var startingTown = [
 },
 {
   title:'Hunter',
-  text:'You can purchase goods from different types of suppliers. However, you can only make one purchase per week. <br>Check the Prices list to see what the buy and sell prices of goods are at.<br> For now, purchase Animal Pelts which cost 30 Duans.',
+  text:'You can purchase goods from different types of suppliers. However, you can only make three purchases per week. <br>Check the Prices list to see what the buy and sell prices of goods are at.<br> For now, purchase Animal Pelts which cost 30 Duans.',
   choices:[
     {
       text:'Buy Animal Pelts',
@@ -273,7 +273,7 @@ var startingTown = [
   choices:[
     {
       text:'Back',
-      index:33
+      index:17
     }
   ]
 },
@@ -283,7 +283,7 @@ var startingTown = [
   choices:[
     {
       text:'Back',
-      index:33
+      index:17
     }
   ]
 },
@@ -311,7 +311,7 @@ var startingTown = [
   choices:[
     {
       text:'Back',
-      index:33
+      index:20
     }
   ]
 },
@@ -321,7 +321,7 @@ var startingTown = [
   choices:[
     {
       text:'Back',
-      index:33
+      index:20
     }
   ]
 },
@@ -349,7 +349,7 @@ var startingTown = [
   choices:[
     {
       text:'Back',
-      index:33
+      index:23
     }
   ]
 },
@@ -359,7 +359,7 @@ var startingTown = [
   choices:[
     {
       text:'Back',
-      index:33
+      index:23
     }
   ]
 },
