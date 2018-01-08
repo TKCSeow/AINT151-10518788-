@@ -157,12 +157,15 @@ function ifs(index)
 	if (index == 0)
 	{
 		stats[0].Money = 300;
+    startingTown[16].choices[4].index = 34;
+    stats[1].week = 0;
     ResetPrices();
 	}
 
 	if (index == 16)
 	{
 		startingTown[26].choices[6] = {text:'Back', index:16};
+
 
 	}
 
