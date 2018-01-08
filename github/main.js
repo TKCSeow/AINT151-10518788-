@@ -989,7 +989,7 @@ function BlacksmithTransactionsSalesman(index)
 		}
 }
 
-
+//Update Prices based on events
 function WeekEvents()
 {
 	if (stats[1].week == 3)
@@ -1020,8 +1020,8 @@ function WeekEvents()
 	}
   if (stats[1].week == 9)
 	{
-		Inventory[5].buyPrice = 500;
-    Inventory[5].sellPrice = 800;
+		Inventory[5].buyPrice = 1500;
+    Inventory[5].sellPrice = 1800;
 	}
 }
 
