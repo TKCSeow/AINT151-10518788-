@@ -100,7 +100,7 @@ function OnGameLoad()
 	 PricesText();
 
 
-   ChangeText(16);
+   ChangeText(0);
 
 }
 
@@ -138,7 +138,7 @@ function ifs(index)
 {
   if (stats[1].week == 10 && stats[0].Money >= 1000)
   {
-    startingTown[16].choices[4].index = 37;
+    startingTown[16].choices[4].index = 39;
   }
 
   if (stats[1].week == 10 && stats[0].Money < 1000)
@@ -147,16 +147,14 @@ function ifs(index)
   }
 
 
-
-
-  if (index == 34 || index == 13)
+  if (index == 34 || index == 13 || index == 39)
 	{
 		stats[1].week += 1;
 	}
 
 	if (index == 0)
 	{
-		stats[0].Money = 300;
+		stats[0].Money = 1000;
     startingTown[16].choices[4].index = 34;
     stats[1].week = 0;
     ResetPrices();
@@ -165,12 +163,18 @@ function ifs(index)
 	if (index == 16)
 	{
 		startingTown[26].choices[6] = {text:'Back', index:16};
-
+stats[0].Money = 1000;
 
 	}
 
+  if (index == 39)
+	{
+    stats[0].Money -= 1000;
+    startingTown[16].choices[4].index = 34;
+	}
 
 }
+
 
 function UpdatePurchases(index)
 {

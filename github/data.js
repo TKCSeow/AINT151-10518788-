@@ -213,7 +213,7 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'From now on you are on your own. You have 40 weeks to make 10,000 Dauns to fulfil your dream of owning a shop.',
+  text:'From now on you are on your own. You have 10 weeks to make 1000 Dauns to buy a shop license.',
   choices:[
     {
       text:'Next',
@@ -526,6 +526,18 @@ var startingTown = [
     {
       text:'Finish',
       index:0
+    },
+
+  ]
+},
+
+{
+  title:'Milestone One',
+  text:'You have sucessfully earned 1000 Dauns. You have bought the rights to a shop license. You now need land to build your shop. There is an empty plot on the high street. You need 3000 Dauns to pay for it.',
+  choices:[
+    {
+      text:'Next',
+      index:16
     },
 
   ]
