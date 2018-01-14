@@ -575,11 +575,19 @@ var marketNews = [
   },
   {
     headline:'Meating Continues',
-    article:'Meat demand has risen and still to keep rising.',
+    article:'Meat demand has risen and still to keep rising. Fruit & Veg prices are to return to normal.',
   },
   {
     headline:'Meating Season Coming to an End',
     article:'Demand for meat is to return to normal next week.',
+  },
+  {
+    headline:'A Quick Diet',
+    article:'Fruit & veg Prices demand to rise, increasing prices. Why? Maybe because all of the meat that was consumed.',
+  },
+  {
+    headline:'Quiet Week',
+    article:'No changes forecast for next week',
   },
   {
     headline:'Dry Season',

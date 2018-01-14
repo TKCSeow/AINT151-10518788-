@@ -58,7 +58,7 @@ function SelectPerk()
   }
   else
   {
-    document.getElementById("currentPerk").innerHTML = "10% discount on all sold items (applied on sale)";
+    document.getElementById("currentPerk").innerHTML = "5% extra on all sold items (applied on sale)";
   }
 }
 
@@ -259,7 +259,7 @@ function FarmerTransactions(index)
 		{
       if (perk == 2)
       {
-        stats[0].Money = stats[0].Money + (Inventory[0].sellPrice * 1.1);
+        stats[0].Money = stats[0].Money + (Inventory[0].sellPrice * 1.05);
       }
       else
       {
@@ -314,7 +314,7 @@ function FarmerTransactions(index)
 			{
         if (perk == 2)
         {
-				  stats[0].Money = stats[0].Money + (Inventory[1].sellPrice * 1.1);
+				  stats[0].Money = stats[0].Money + (Inventory[1].sellPrice * 1.05);
         }
         else
         {
@@ -371,7 +371,7 @@ function MaterialSupplierTransactions(index)
 		{
       if (perk == 2)
       {
-			  stats[0].Money = stats[0].Money + (Inventory[2].sellPrice * 1.1);
+			  stats[0].Money = stats[0].Money + (Inventory[2].sellPrice * 1.05);
       }
       else
       {
@@ -425,7 +425,7 @@ function MaterialSupplierTransactions(index)
 		{
       if (perk == 2)
       {
-			   stats[0].Money = stats[0].Money + (Inventory[3].sellPrice * 1.1);
+			   stats[0].Money = stats[0].Money + (Inventory[3].sellPrice * 1.05);
       }
       else
       {
@@ -482,7 +482,7 @@ function BlacksmithTransactions(index)
 		{
       if (perk == 2)
       {
-			   stats[0].Money = stats[0].Money + (Inventory[4].sellPrice * 1.1);
+			   stats[0].Money = stats[0].Money + (Inventory[4].sellPrice * 1.05);
       }
       else
       {
@@ -536,7 +536,7 @@ function BlacksmithTransactions(index)
 		{
       if (perk == 2)
       {
-			    stats[0].Money = stats[0].Money + (Inventory[5].sellPrice * 1.1);
+			    stats[0].Money = stats[0].Money + (Inventory[5].sellPrice * 1.05);
       }
       else
       {
@@ -605,6 +605,8 @@ function WeekEvents()
 
   if (stats[1].week == 7)
 	{
+    Inventory[0].buyPrice = 20;
+    Inventory[0].sellPrice = 40;
 		Inventory[1].buyPrice = 60;
     Inventory[1].sellPrice = 90;
 	}
@@ -627,7 +629,7 @@ function WeekEvents()
 	}
   if (stats[1].week == 9)
 	{
-	
+
 	}
 }
 
