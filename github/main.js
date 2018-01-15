@@ -1,7 +1,7 @@
 var perk;
 var purchaseCounter = 0;
 
-function myFunction() {
+function navResponsive() {
     var x = document.getElementById("nav");
     if (x.className === "nav") {
         x.className += " responsive";
@@ -10,6 +10,7 @@ function myFunction() {
     }
 }
 
+//Store Player information from Game Setup Page
 function StorePlayerData()
 {
 
@@ -34,7 +35,7 @@ var perkArray = [
 
 function OnLoad()
 {
-	myFunction();
+	navResponsive();
 	for(var i = 0; i < perkArray.length; i++)
 	{
  		var tag = "<option value='" + i + "'>" + perkArray[i] + "</option>";
@@ -200,7 +201,7 @@ function UpdatePurchases(index)
 
 function Transactions(index)
 {
-  TutorialTransactions(index);
+    TutorialTransactions(index);
 
     FarmerTransactions(index);
     MaterialSupplierTransactions(index);
@@ -229,7 +230,7 @@ function TutorialTransactions(index)
 	}
 }
 
-
+//Farmer: Buy/Sell Transactions and Error Catching
 function FarmerTransactions(index)
 {
 	//Animal Pelts
@@ -344,6 +345,7 @@ function FarmerTransactions(index)
 			}
 }
 
+//Material Supplier: Buy/Sell Transactions and Error Catching
 function MaterialSupplierTransactions(index)
 {
 	//Fruits & Veg
@@ -455,6 +457,7 @@ function MaterialSupplierTransactions(index)
 		}
 }
 
+//Blacksmith: Buy/Sell Transactions and Error Catching
 function BlacksmithTransactions(index)
 {
 	//Tools
@@ -567,8 +570,7 @@ function BlacksmithTransactions(index)
 }
 
 
-
-//Update Prices based on events
+//Update Prices based on Market News events
 function WeekEvents()
 {
   if (stats[1].week == 2)
@@ -633,6 +635,7 @@ function WeekEvents()
 	}
 }
 
+//Create Inventory tags
 function InventoryText()
 {
 
@@ -648,6 +651,7 @@ function InventoryText()
 	}
 }
 
+//Update Inventory tags
 function UpdateInventory()
 {
 	for(var i = 0; i < Inventory.length; i++)
@@ -661,6 +665,7 @@ function UpdateInventory()
 	}
 }
 
+//Create Prices tags
 function PricesText()
 {
 
@@ -680,6 +685,7 @@ function PricesText()
 	}
 }
 
+//Update Prices tags
 function UpdatePrices()
 {
 	for(var i = 0; i < Inventory.length; i++)
@@ -695,6 +701,7 @@ function UpdatePrices()
 	}
 }
 
+//Update Market News
 function MarketNewsUpdate()
 {
   if (stats[1].week < marketNews.length)
@@ -704,6 +711,7 @@ function MarketNewsUpdate()
   }
 }
 
+//Reset Prices to original when returning to beginning
 function ResetPrices()
 {
   Inventory[0].buyPrice = 20;
@@ -720,29 +728,30 @@ function ResetPrices()
 	Inventory[5].sellPrice = 1800;
 }
 
+//Display image based on index
 function ChangeImage(index)
 {
-  if (index == 16  || index == 33)
+  if (index == 16  || index == 33) //Merchant Guild
   {
     var tag = "<img src=\"img/FM.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
   }
-  else if (index == 20)
-  {
-    var tag = "<img src=\"img/FH.png\" class=\"image\">"
-    document.getElementById('Image').innerHTML = tag;
-  }
-  else if (index == 17)
+  else if (index == 17) //Farmer
   {
     var tag = "<img src=\"img/FF.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
   }
-  else if (index == 23)
+  else if (index == 20) //Material Supplier
+  {
+    var tag = "<img src=\"img/FH.png\" class=\"image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
+  else if (index == 23) //Blacksmith
   {
     var tag = "<img src=\"img/FB.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
   }
-  else if (index == 26)
+  else if (index == 26) //Trading Company
   {
     var tag = "<img src=\"img/FT.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
