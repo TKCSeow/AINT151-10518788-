@@ -104,6 +104,7 @@ function OnGameLoad()
 
 }
 
+//This is the main function of the game
 function ChangeText(index)
 {
   UpdatePurchases(index);
@@ -133,6 +134,7 @@ function ChangeText(index)
 	document.getElementById('Money').innerHTML = String(stats[0].Money) + " Dauns"
 
 }
+
 
 function EventsAndResets(index)
 {
