@@ -212,21 +212,22 @@ function Transactions(index)
 //Tutorial Transactions
 function TutorialTransactions(index)
 {
-  if (index == 8)
-	{
-		stats[0].Money = stats[0].Money - 20;
-
-	}
-
 	if (index == 5)
 	{
 		stats[0].Money = stats[0].Money - 220;
 	}
 
+  if (index == 8)
+  {
+    stats[0].Money = stats[0].Money - 20;
+    Inventory[0].amount = Inventory[0].amount + 1;
+
+  }
 
 	if (index == 11)
 	{
 		stats[0].Money = stats[0].Money + 40;
+    Inventory[0].amount = Inventory[0].amount - 1;
 	}
 }
 
