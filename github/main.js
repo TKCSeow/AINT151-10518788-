@@ -43,6 +43,7 @@ function OnLoad()
 	}
 }
 
+//Obtain player choice of perk
 function SelectPerk()
 {
 	var selection = 0
@@ -63,6 +64,7 @@ function SelectPerk()
   }
 }
 
+//Displays what perk the player has chosen
 function DisplayPerk()
 {
 	var selection = 0;
@@ -82,6 +84,7 @@ function DisplayPerk()
     document.getElementById("PlayerName").innerHTML += " (Salesman)";
   }
 }
+
 
 function OnGameLoad()
 {
@@ -135,7 +138,7 @@ function ChangeText(index)
 
 }
 
-
+//Neccessary stuff
 function EventsAndResets(index)
 {
   if (stats[1].week == 10 && stats[0].Money >= 1000)
@@ -179,7 +182,7 @@ function EventsAndResets(index)
 
 }
 
-
+//Manages the purchase counter
 function UpdatePurchases(index)
 {
   document.getElementById('purchase').innerHTML = "Purchases: " + String(3 - purchaseCounter) + " left"
