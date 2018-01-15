@@ -42,7 +42,6 @@ function OnLoad()
 	}
 }
 
-
 function SelectPerk()
 {
 	var selection = 0
@@ -59,7 +58,7 @@ function SelectPerk()
   }
   else
   {
-    document.getElementById("currentPerk").innerHTML = "10% discount on all sold items (applied on sale)";
+    document.getElementById("currentPerk").innerHTML = "5% extra on all sold items (applied on sale)";
   }
 }
 
@@ -100,14 +99,14 @@ function OnGameLoad()
 	 PricesText();
 
 
-   ChangeText(16);
+   ChangeText(0);
 
 }
 
 function ChangeText(index)
 {
   UpdatePurchases(index);
-  ifs(index);
+  EventsAndResets(index);
 	Transactions(index, perk);
 	WeekEvents(index);
   MarketNewsUpdate();
@@ -134,22 +133,22 @@ function ChangeText(index)
 
 }
 
-function ifs(index)
+function EventsAndResets(index)
 {
   if (stats[1].week == 10 && stats[0].Money >= 1000)
   {
-    startingTown[16].choices[4].index = 37;
+    startingTown[16].choices[4].index = 39;
+    startingTown[33].choices[4].index = 39;
   }
 
   if (stats[1].week == 10 && stats[0].Money < 1000)
   {
     startingTown[16].choices[4].index = 38;
+    startingTown[33].choices[1].index = 38;
   }
 
 
-
-
-  if (index == 34 || index == 13)
+  if (index == 34 || index == 13 || index == 39)
 	{
 		stats[1].week += 1;
 	}
@@ -166,17 +165,23 @@ function ifs(index)
 	{
 		startingTown[26].choices[6] = {text:'Back', index:16};
 
-
 	}
 
+  if (index == 39)
+	{
+    stats[0].Money -= 1000;
+    startingTown[16].choices[4].index = 34;
+    startingTown[33].choices[1].index = 16;
+	}
 
 }
+
 
 function UpdatePurchases(index)
 {
   document.getElementById('purchase').innerHTML = "Purchases: " + String(3 - purchaseCounter) + " left"
 
-  if (index == 34)
+  if (index == 34 || index == 0)
   {
     purchaseCounter = 0;
   }
@@ -197,24 +202,10 @@ function Transactions(index)
 {
   TutorialTransactions(index);
 
-  if (perk == 1)
-  {
-    HunterTransactionsBarter(index)
-    FarmerTransactionsBarter(index);
-    BlacksmithTransactionsBarter(index);
-  }
-  else if (perk == 2)
-  {
-    HunterTransactionsSalesman(index)
-    FarmerTransactionsSalesman(index);
-    BlacksmithTransactionsSalesman(index);
-  }
-  else
-  {
-    HunterTransactions(index);
     FarmerTransactions(index);
+    MaterialSupplierTransactions(index);
     BlacksmithTransactions(index);
-  }
+
 }
 
 //Tutorial Transactions
@@ -222,30 +213,38 @@ function TutorialTransactions(index)
 {
   if (index == 8)
 	{
-		stats[0].Money = stats[0].Money - 30;
+		stats[0].Money = stats[0].Money - 20;
 
 	}
 
 	if (index == 5)
 	{
-		stats[0].Money = stats[0].Money - 150;
+		stats[0].Money = stats[0].Money - 220;
 	}
 
 
 	if (index == 11)
 	{
-		stats[0].Money = stats[0].Money + 70;
+		stats[0].Money = stats[0].Money + 40;
 	}
 }
 
-//No Perk Transactions
-function HunterTransactions(index)
+
+function FarmerTransactions(index)
 {
 	//Animal Pelts
 	//Buy
 		if (index == 18)
 		{
-			stats[0].Money = stats[0].Money - Inventory[0].buyPrice;
+      if (perk == 1)
+      {
+        stats[0].Money = stats[0].Money - (Inventory[0].buyPrice * 0.9);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money - Inventory[0].buyPrice;
+      }
+
 			Inventory[0].amount = Inventory[0].amount + 1;
 			purchaseCounter++;
       if (purchaseCounter == 3)
@@ -258,7 +257,15 @@ function HunterTransactions(index)
 	//Sell
 		if (index == 27)
 		{
-			stats[0].Money = stats[0].Money + Inventory[0].sellPrice;
+      if (perk == 2)
+      {
+        stats[0].Money = stats[0].Money + (Inventory[0].sellPrice * 1.05);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money + Inventory[0].sellPrice;
+      }
+
 			Inventory[0].amount = Inventory[0].amount - 1;
 		}
 
@@ -286,7 +293,14 @@ function HunterTransactions(index)
 		//Buy
 			if (index == 19)
 			{
-				stats[0].Money = stats[0].Money - Inventory[1].buyPrice;
+        if (perk == 1)
+        {
+				      stats[0].Money = stats[0].Money - (Inventory[1].buyPrice * 0.9);
+        }
+        else
+        {
+          stats[0].Money = stats[0].Money - Inventory[1].buyPrice;
+        }
 				Inventory[1].amount = Inventory[1].amount + 1;
         purchaseCounter++;
         if (purchaseCounter == 3)
@@ -298,7 +312,14 @@ function HunterTransactions(index)
 		//Sell
 			if (index == 28)
 			{
-				stats[0].Money = stats[0].Money + Inventory[1].sellPrice;
+        if (perk == 2)
+        {
+				  stats[0].Money = stats[0].Money + (Inventory[1].sellPrice * 1.05);
+        }
+        else
+        {
+          stats[0].Money = stats[0].Money + Inventory[1].sellPrice;
+        }
 				Inventory[1].amount = Inventory[1].amount - 1;
 			}
 
@@ -323,13 +344,20 @@ function HunterTransactions(index)
 			}
 }
 
-function FarmerTransactions(index)
+function MaterialSupplierTransactions(index)
 {
 	//Fruits & Veg
 	//Buy
 		if (index == 21)
 		{
-			stats[0].Money = stats[0].Money - Inventory[2].buyPrice;
+      if (perk == 1)
+      {
+			     stats[0].Money = stats[0].Money - (Inventory[2].buyPrice * 0.9);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money - Inventory[2].buyPrice;
+      }
 			Inventory[2].amount = Inventory[2].amount + 1;
       purchaseCounter++;
       if (purchaseCounter == 3)
@@ -341,7 +369,14 @@ function FarmerTransactions(index)
 	//Sell
 		if (index == 29)
 		{
-			stats[0].Money = stats[0].Money + Inventory[2].sellPrice;
+      if (perk == 2)
+      {
+			  stats[0].Money = stats[0].Money + (Inventory[2].sellPrice * 1.05);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money + Inventory[2].sellPrice;
+      }
 			Inventory[2].amount = Inventory[2].amount - 1;
 		}
 
@@ -369,7 +404,14 @@ function FarmerTransactions(index)
 	//Buy
 		if (index == 22)
 		{
-			stats[0].Money = stats[0].Money - Inventory[3].buyPrice;
+      if (perk == 1)
+      {
+			    stats[0].Money = stats[0].Money - (Inventory[3].buyPrice * 0.9);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money - Inventory[3].buyPrice;
+      }
 			Inventory[3].amount = Inventory[3].amount + 1;
       purchaseCounter++;
       if (purchaseCounter == 3)
@@ -381,7 +423,14 @@ function FarmerTransactions(index)
 	//Sell
 		if (index == 30)
 		{
-			stats[0].Money = stats[0].Money + Inventory[3].sellPrice;
+      if (perk == 2)
+      {
+			   stats[0].Money = stats[0].Money + (Inventory[3].sellPrice * 1.05);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money + Inventory[3].sellPrice;
+      }
 			Inventory[3].amount = Inventory[3].amount - 1;
 		}
 
@@ -412,7 +461,14 @@ function BlacksmithTransactions(index)
 	//Buy
 		if (index == 24)
 		{
-			stats[0].Money = stats[0].Money - Inventory[4].buyPrice;
+      if (perk == 1)
+      {
+			   stats[0].Money = stats[0].Money - (Inventory[4].buyPrice * 0.9);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money - Inventory[4].buyPrice;
+      }
 			Inventory[4].amount = Inventory[4].amount + 1;
       purchaseCounter++;
       if (purchaseCounter == 3)
@@ -424,7 +480,14 @@ function BlacksmithTransactions(index)
 	//Sell
 		if (index == 31)
 		{
-			stats[0].Money = stats[0].Money + Inventory[4].sellPrice;
+      if (perk == 2)
+      {
+			   stats[0].Money = stats[0].Money + (Inventory[4].sellPrice * 1.05);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money + Inventory[4].sellPrice;
+      }
 			Inventory[4].amount = Inventory[4].amount - 1;
 		}
 
@@ -452,7 +515,14 @@ function BlacksmithTransactions(index)
 	//Buy
 		if (index == 25)
 		{
-			stats[0].Money = stats[0].Money - Inventory[5].buyPrice;
+      if (perk == 1)
+      {
+			     stats[0].Money = stats[0].Money - (Inventory[5].buyPrice * 0.9);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money - Inventory[5].buyPrice;
+      }
 			Inventory[5].amount = Inventory[5].amount + 1;
       purchaseCounter++;
       if (purchaseCounter == 3)
@@ -464,7 +534,14 @@ function BlacksmithTransactions(index)
 	//Sell
 		if (index == 32)
 		{
-			stats[0].Money = stats[0].Money + Inventory[5].sellPrice;
+      if (perk == 2)
+      {
+			    stats[0].Money = stats[0].Money + (Inventory[5].sellPrice * 1.05);
+      }
+      else
+      {
+        stats[0].Money = stats[0].Money + Inventory[5].sellPrice;
+      }
 			Inventory[5].amount = Inventory[5].amount - 1;
 		}
 
@@ -489,539 +566,70 @@ function BlacksmithTransactions(index)
 		}
 }
 
-//Barterer Transactions
-function HunterTransactionsBarter(index)
-{
-	//Animal Pelts
-	//Buy
-		if (index == 18)
-		{
-			stats[0].Money = stats[0].Money - (Inventory[0].buyPrice * 0.9);
-			Inventory[0].amount = Inventory[0].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[18].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 27)
-		{
-			stats[0].Money = stats[0].Money + Inventory[0].sellPrice;
-			Inventory[0].amount = Inventory[0].amount - 1;
-		}
 
-	//Buy-error
-	if (stats[0].Money < Inventory[0].buyPrice)
-	{
-		startingTown[17].choices[0].index = 36;
-		startingTown[36].choices[0].index = 17;
-	}
-	else if (stats[0].Money >= Inventory[0].buyPrice)
-	{
-		startingTown[17].choices[0].index = 18;
-	}
-	//Sell-error
-		if (Inventory[0].amount == 0)
-		{
-			startingTown[26].choices[0].index = 35;
-		}
-		else if (Inventory[0].amount > 0)
-		{
-			startingTown[26].choices[0].index = 27;
-		}
-
-		//Meats
-		//Buy
-			if (index == 19)
-			{
-				stats[0].Money = stats[0].Money - (Inventory[1].buyPrice * 0.9);
-				Inventory[1].amount = Inventory[1].amount + 1;
-        purchaseCounter++;
-        if (purchaseCounter == 3)
-        {
-          startingTown[26].choices[6].index = 33;
-          startingTown[19].choices[0].index = 33;
-        }
-			}
-		//Sell
-			if (index == 28)
-			{
-				stats[0].Money = stats[0].Money + Inventory[1].sellPrice;
-				Inventory[1].amount = Inventory[1].amount - 1;
-			}
-
-		//Buy-error
-		if (stats[0].Money < Inventory[1].buyPrice)
-		{
-			startingTown[17].choices[1].index = 36;
-			startingTown[36].choices[0].index = 17;
-		}
-		else if (stats[0].Money >= Inventory[1].buyPrice)
-		{
-			startingTown[17].choices[1].index = 19;
-		}
-		//Sell-error
-			if (Inventory[1].amount == 0)
-			{
-				startingTown[26].choices[1].index = 35;
-			}
-			else if (Inventory[1].amount > 0)
-			{
-				startingTown[26].choices[1].index = 28;
-			}
-}
-
-function FarmerTransactionsBarter(index)
-{
-	//Fruits & Veg
-	//Buy
-		if (index == 21)
-		{
-			stats[0].Money = stats[0].Money - (Inventory[2].buyPrice * 9);
-			Inventory[2].amount = Inventory[2].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[21].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 29)
-		{
-			stats[0].Money = stats[0].Money + Inventory[2].sellPrice;
-			Inventory[2].amount = Inventory[2].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[2].buyPrice)
-	{
-		startingTown[20].choices[0].index = 36;
-		startingTown[36].choices[0].index = 20;
-	}
-	else if (stats[0].Money >= Inventory[2].buyPrice)
-	{
-		startingTown[20].choices[0].index = 21;
-	}
-	//Sell-error
-	if (Inventory[2].amount == 0)
-	{
-			startingTown[26].choices[2].index = 35;
-	}
-	else if (Inventory[2].amount > 0)
-	{
-			startingTown[26].choices[2].index = 29;
-	}
-
-	//Wheat
-	//Buy
-		if (index == 22)
-		{
-			stats[0].Money = stats[0].Money - (Inventory[3].buyPrice * 0.9);
-			Inventory[3].amount = Inventory[3].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[22].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 30)
-		{
-			stats[0].Money = stats[0].Money + Inventory[3].sellPrice;
-			Inventory[3].amount = Inventory[3].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[3].buyPrice)
-	{
-		startingTown[20].choices[1].index = 36;
-		startingTown[36].choices[0].index = 20;
-	}
-	else if (stats[0].Money >= Inventory[3].buyPrice)
-	{
-		startingTown[20].choices[1].index = 22;
-	}
-	//Sell-error
-		if (Inventory[3].amount == 0)
-		{
-			startingTown[26].choices[3].index = 35;
-		}
-		else if (Inventory[3].amount > 0)
-		{
-			startingTown[26].choices[3].index = 30;
-		}
-}
-
-function BlacksmithTransactionsBarter(index)
-{
-	//Tools
-	//Buy
-		if (index == 24)
-		{
-			stats[0].Money = stats[0].Money - (Inventory[4].buyPrice * 0.9);
-			Inventory[4].amount = Inventory[4].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[24].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 31)
-		{
-			stats[0].Money = stats[0].Money + Inventory[4].sellPrice;
-			Inventory[4].amount = Inventory[4].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[4].buyPrice)
-	{
-		startingTown[23].choices[0].index = 36;
-		startingTown[36].choices[0].index = 23;
-	}
-	else if (stats[0].Money >= Inventory[4].buyPrice)
-	{
-		startingTown[23].choices[0].index = 24;
-	}
-	//Sell-error
-	if (Inventory[4].amount == 0)
-	{
-			startingTown[26].choices[4].index = 35;
-	}
-	else if (Inventory[4].amount > 0)
-	{
-			startingTown[26].choices[4].index = 31;
-	}
-
-	//Weapons
-	//Buy
-		if (index == 25)
-		{
-			stats[0].Money = stats[0].Money - (Inventory[5].buyPrice * 0.9);
-			Inventory[5].amount = Inventory[5].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[25].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 32)
-		{
-			stats[0].Money = stats[0].Money + Inventory[5].sellPrice;
-			Inventory[5].amount = Inventory[5].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[5].buyPrice)
-	{
-		startingTown[23].choices[1].index = 36;
-		startingTown[36].choices[0].index = 23;
-	}
-	else if (stats[0].Money >= Inventory[5].buyPrice)
-	{
-		startingTown[23].choices[1].index = 25;
-	}
-	//Sell-error
-		if (Inventory[5].amount == 0)
-		{
-			startingTown[26].choices[5].index = 35;
-		}
-		else if (Inventory[5].amount > 0)
-		{
-			startingTown[26].choices[5].index = 32;
-		}
-}
-
-//Salesman Transactions
-function HunterTransactionsSalesman(index)
-{
-	//Animal Pelts
-	//Buy
-		if (index == 18)
-		{
-			stats[0].Money = stats[0].Money - Inventory[0].buyPrice;
-			Inventory[0].amount = Inventory[0].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[18].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 27)
-		{
-			stats[0].Money = stats[0].Money + (Inventory[0].sellPrice * 1.1);
-			Inventory[0].amount = Inventory[0].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[0].buyPrice)
-	{
-		startingTown[17].choices[0].index = 36;
-		startingTown[36].choices[0].index = 17;
-	}
-	else if (stats[0].Money >= Inventory[0].buyPrice)
-	{
-		startingTown[17].choices[0].index = 18;
-	}
-	//Sell-error
-		if (Inventory[0].amount == 0)
-		{
-			startingTown[26].choices[0].index = 35;
-		}
-		else if (Inventory[0].amount > 0)
-		{
-			startingTown[26].choices[0].index = 27;
-		}
-
-		//Meats
-		//Buy
-			if (index == 19)
-			{
-				stats[0].Money = stats[0].Money - Inventory[1].buyPrice;
-				Inventory[1].amount = Inventory[1].amount + 1;
-        purchaseCounter++;
-        if (purchaseCounter == 3)
-        {
-          startingTown[26].choices[6].index = 33;
-          startingTown[19].choices[0].index = 33;
-        }
-			}
-		//Sell
-			if (index == 28)
-			{
-				stats[0].Money = stats[0].Money + (Inventory[1].sellPrice * 1.1);
-				Inventory[1].amount = Inventory[1].amount - 1;
-			}
-
-		//Buy-error
-		if (stats[0].Money < Inventory[1].buyPrice)
-		{
-			startingTown[17].choices[1].index = 36;
-			startingTown[36].choices[0].index = 17;
-		}
-		else if (stats[0].Money >= Inventory[1].buyPrice)
-		{
-			startingTown[17].choices[1].index = 19;
-		}
-		//Sell-error
-			if (Inventory[1].amount == 0)
-			{
-				startingTown[26].choices[1].index = 35;
-			}
-			else if (Inventory[1].amount > 0)
-			{
-				startingTown[26].choices[1].index = 28;
-			}
-}
-
-function FarmerTransactionsSalesman(index)
-{
-	//Fruits & Veg
-	//Buy
-		if (index == 21)
-		{
-			stats[0].Money = stats[0].Money - Inventory[2].buyPrice;
-			Inventory[2].amount = Inventory[2].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[21].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 29)
-		{
-			stats[0].Money = stats[0].Money + (Inventory[2].sellPrice * 1.1);
-			Inventory[2].amount = Inventory[2].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[2].buyPrice)
-	{
-		startingTown[20].choices[0].index = 36;
-		startingTown[36].choices[0].index = 20;
-	}
-	else if (stats[0].Money >= Inventory[2].buyPrice)
-	{
-		startingTown[20].choices[0].index = 21;
-	}
-	//Sell-error
-	if (Inventory[2].amount == 0)
-	{
-			startingTown[26].choices[2].index = 35;
-	}
-	else if (Inventory[2].amount > 0)
-	{
-			startingTown[26].choices[2].index = 29;
-	}
-
-	//Wheat
-	//Buy
-		if (index == 22)
-		{
-			stats[0].Money = stats[0].Money - Inventory[3].buyPrice;
-			Inventory[3].amount = Inventory[3].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[22].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 30)
-		{
-			stats[0].Money = stats[0].Money + (Inventory[3].sellPrice * 1.1);
-			Inventory[3].amount = Inventory[3].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[3].buyPrice)
-	{
-		startingTown[20].choices[1].index = 36;
-		startingTown[36].choices[0].index = 20;
-	}
-	else if (stats[0].Money >= Inventory[3].buyPrice)
-	{
-		startingTown[20].choices[1].index = 22;
-	}
-	//Sell-error
-		if (Inventory[3].amount == 0)
-		{
-			startingTown[26].choices[3].index = 35;
-		}
-		else if (Inventory[3].amount > 0)
-		{
-			startingTown[26].choices[3].index = 30;
-		}
-}
-
-function BlacksmithTransactionsSalesman(index)
-{
-	//Tools
-	//Buy
-		if (index == 24)
-		{
-			stats[0].Money = stats[0].Money - Inventory[4].buyPrice;
-			Inventory[4].amount = Inventory[4].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[24].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 31)
-		{
-			stats[0].Money = stats[0].Money + (Inventory[4].sellPrice * 1.1);
-			Inventory[4].amount = Inventory[4].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[4].buyPrice)
-	{
-		startingTown[23].choices[0].index = 36;
-		startingTown[36].choices[0].index = 23;
-	}
-	else if (stats[0].Money >= Inventory[4].buyPrice)
-	{
-		startingTown[23].choices[0].index = 24;
-	}
-	//Sell-error
-	if (Inventory[4].amount == 0)
-	{
-			startingTown[26].choices[4].index = 35;
-	}
-	else if (Inventory[4].amount > 0)
-	{
-			startingTown[26].choices[4].index = 31;
-	}
-
-	//Weapons
-	//Buy
-		if (index == 25)
-		{
-			stats[0].Money = stats[0].Money - Inventory[5].buyPrice;
-			Inventory[5].amount = Inventory[5].amount + 1;
-      purchaseCounter++;
-      if (purchaseCounter == 3)
-      {
-        startingTown[26].choices[6].index = 33;
-        startingTown[25].choices[0].index = 33;
-      }
-		}
-	//Sell
-		if (index == 32)
-		{
-			stats[0].Money = stats[0].Money + (Inventory[5].sellPrice * 1.1);
-			Inventory[5].amount = Inventory[5].amount - 1;
-		}
-
-	//Buy-error
-	if (stats[0].Money < Inventory[5].buyPrice)
-	{
-		startingTown[23].choices[1].index = 36;
-		startingTown[36].choices[0].index = 23;
-	}
-	else if (stats[0].Money >= Inventory[5].buyPrice)
-	{
-		startingTown[23].choices[1].index = 25;
-	}
-	//Sell-error
-		if (Inventory[5].amount == 0)
-		{
-			startingTown[26].choices[5].index = 35;
-		}
-		else if (Inventory[5].amount > 0)
-		{
-			startingTown[26].choices[5].index = 32;
-		}
-}
 
 //Update Prices based on events
 function WeekEvents()
 {
-	if (stats[1].week == 3)
+  if (stats[1].week == 2)
 	{
-		Inventory[3].buyPrice = 50;
-    Inventory[3].sellPrice = 90;
+		Inventory[0].buyPrice = 40;
+    Inventory[0].sellPrice = 60;
 	}
 
-	if (stats[1].week == 5)
+	if (stats[1].week == 3)
 	{
-		Inventory[2].buyPrice = 60;
-    Inventory[2].sellPrice = 110;
+		Inventory[1].buyPrice = 10;
+    Inventory[1].sellPrice = 50;
+    Inventory[0].buyPrice = 20;
+    Inventory[0].sellPrice = 40;
 	}
+
+	if (stats[1].week == 4)
+	{
+		Inventory[0].buyPrice = 30;
+    Inventory[0].sellPrice = 40;
+	}
+
+  if (stats[1].week == 5)
+	{
+		Inventory[1].buyPrice = 50;
+    Inventory[1].sellPrice = 70;
+	}
+
+  if (stats[1].week == 6)
+	{
+		Inventory[1].buyPrice = 60;
+    Inventory[1].sellPrice = 80;
+	}
+
   if (stats[1].week == 7)
 	{
-    Inventory[0].buyPrice = 30;
-    Inventory[0].sellPrice = 50;
-    Inventory[1].buyPrice = 30;
+    Inventory[0].buyPrice = 20;
+    Inventory[0].sellPrice = 40;
+		Inventory[1].buyPrice = 60;
+    Inventory[1].sellPrice = 90;
+	}
+
+  if (stats[1].week == 8)
+	{
+		Inventory[1].buyPrice = 30;
     Inventory[1].sellPrice = 50;
-    Inventory[2].buyPrice = 10;
-    Inventory[2].sellPrice = 30;
-    Inventory[3].buyPrice = 15;
-    Inventory[3].sellPrice = 40;
-    Inventory[4].buyPrice = 140;
-  	Inventory[4].sellPrice = 180;
-    Inventory[5].buyPrice = 300;
-  	Inventory[5].sellPrice = 400;
+	}
+
+  if (stats[1].week == 9)
+	{
+		Inventory[0].buyPrice = 50;
+    Inventory[0].sellPrice = 70;
+	}
+
+  if (stats[1].week == 12)
+	{
+
 	}
   if (stats[1].week == 9)
 	{
-		Inventory[5].buyPrice = 1500;
-    Inventory[5].sellPrice = 1800;
+
 	}
 }
 
@@ -1098,18 +706,18 @@ function MarketNewsUpdate()
 
 function ResetPrices()
 {
-  Inventory[0].buyPrice = 30;
-  Inventory[0].sellPrice = 70;
-  Inventory[1].buyPrice = 20;
-  Inventory[1].sellPrice = 60;
-  Inventory[2].buyPrice = 10;
-  Inventory[2].sellPrice = 40;
-  Inventory[3].buyPrice = 20;
-  Inventory[3].sellPrice = 50;
-  Inventory[4].buyPrice = 120;
-	Inventory[4].sellPrice = 200;
-  Inventory[5].buyPrice = 1000;
-	Inventory[5].sellPrice = 1200;
+  Inventory[0].buyPrice = 20;
+  Inventory[0].sellPrice = 40;
+  Inventory[1].buyPrice = 30;
+  Inventory[1].sellPrice = 50;
+  Inventory[2].buyPrice = 240;
+  Inventory[2].sellPrice = 300;
+  Inventory[3].buyPrice = 360;
+  Inventory[3].sellPrice = 420;
+  Inventory[4].buyPrice = 1100;
+	Inventory[4].sellPrice = 1400;
+  Inventory[5].buyPrice = 1500;
+	Inventory[5].sellPrice = 1800;
 }
 
 function ChangeImage(index)
@@ -1119,12 +727,12 @@ function ChangeImage(index)
     var tag = "<img src=\"img/FM.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
   }
-  else if (index == 17)
+  else if (index == 20)
   {
     var tag = "<img src=\"img/FH.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;
   }
-  else if (index == 20)
+  else if (index == 17)
   {
     var tag = "<img src=\"img/FF.png\" class=\"image\">"
     document.getElementById('Image').innerHTML = tag;

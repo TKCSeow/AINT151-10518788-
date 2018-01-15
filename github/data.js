@@ -9,40 +9,40 @@ var stats = [
 
 var Inventory = [
   {
-    itemName: 'Animal Pelts',
+    itemName: 'Fruit & Veg',
     amount: 0,
-    buyPrice:30,
-    sellPrice:70,
+    buyPrice:20,
+    sellPrice:40,
   },
   {
     itemName: 'Meat',
     amount: 0,
-    buyPrice:20,
-    sellPrice:60,
-  },
-  {
-    itemName: 'Fruit & Veg',
-    amount: 0,
-    buyPrice:10,
-    sellPrice:40,
-  },
-  {
-    itemName: 'Wheat',
-    amount: 0,
-    buyPrice:20,
+    buyPrice:30,
     sellPrice:50,
+  },
+  {
+    itemName: 'Wood Bundles',
+    amount: 0,
+    buyPrice:240,
+    sellPrice:300,
+  },
+  {
+    itemName: 'Ores',
+    amount: 0,
+    buyPrice:360,
+    sellPrice:420,
   },
   {
     itemName: 'Tools',
     amount: 0,
-    buyPrice:120,
-    sellPrice:200,
+    buyPrice:1100,
+    sellPrice:1400,
   },
   {
     itemName: 'Weapons',
     amount: 0,
-    buyPrice:1000,
-    sellPrice:1200,
+    buyPrice:1500,
+    sellPrice:1800,
   },
 ]
 
@@ -93,7 +93,7 @@ var startingTown = [
 },
 {
   title:'Stables',
-  text:'The stable master says he\'ll offer you 150 Dauns.',
+  text:'The stable master says he\'ll offer you 220 Dauns.',
   choices:[
     {
       text:'Buy',
@@ -104,7 +104,7 @@ var startingTown = [
 
 {
   title:'Stables',
-  text:'You paid 150 Dauns for the horse and cart. You head back to the Merchant Guild to register your horse.',
+  text:'You paid 220 Dauns for the horse and cart. You head back to the Merchant Guild to register your horse.',
   choices:[
     {
       text:'Next',
@@ -115,28 +115,28 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'Your horse is now registered. You now need to purchase some goods.<br>Head to the local hunter',
+  text:'Your horse is now registered. You now need to purchase some goods.<br>Head to the local farmer',
   choices:[
     {
-      text:'To the hunter',
+      text:'To the Farmer',
       index:7
     }
   ]
 },
 {
-  title:'Hunter',
-  text:'You can purchase goods from different types of suppliers. However, you can only make three purchases per week. <br>Check the Prices list to see what the buy and sell prices of goods are at.<br> For now, purchase Animal Pelts which cost 30 Duans.',
+  title:'Farmer',
+  text:'You can purchase goods from different types of suppliers. However, you can only make three purchases per week. <br>Check the Prices list to see what the buy and sell prices of goods are at.<br> For now, purchase Fruit & Veg which cost 20 Duans.',
   choices:[
     {
-      text:'Buy Animal Pelts',
+      text:'Buy Fruit & Veg',
       index:8
     },
   ]
 },
 
 {
-  title:'Hunter',
-  text:'Animal Pelts purchased.<br>',
+  title:'Farmer',
+  text:'Fruit & Veg purchased.',
   choices:[
     {
       text:'Next',
@@ -161,7 +161,7 @@ var startingTown = [
   text:'The Trading Company is where you can sell your goods. You can sell as many times you want each week, or not sell at all and sell at a later date. Here you will always sell at a profit but be careful, there are exceptions. Prices can fluctuate, meaning they can rise or drop. <br>Check the Market News every week to make an informed choice.',
   choices:[
     {
-      text:'Sell Animal Pelts',
+      text:'Sell Fruit & Veg',
       index:11
     }
   ]
@@ -169,7 +169,7 @@ var startingTown = [
 
 {
   title:'Trading Company',
-  text:'Animal Pelts Sold',
+  text:'Fruit & Veg Sold',
   choices:[
     {
       text:'Next',
@@ -213,7 +213,7 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'From now on you are on your own. You have 40 weeks to make 10,000 Dauns to fulfil your dream of owning a shop.',
+  text:'From now on you are on your own. You have 10 weeks to make 1000 Dauns to buy a shop license.',
   choices:[
     {
       text:'Next',
@@ -226,11 +226,11 @@ var startingTown = [
   text:'Where to next?',
   choices:[
     {
-      text:'Hunter',
+      text:'Farmer',
       index:17
     },
     {
-      text:'Farmer',
+      text:'Material Supplier',
       index:20
     },
     {
@@ -250,11 +250,11 @@ var startingTown = [
 },
 
 {
-  title:'Hunter',
-  text:'<i>Hunter: What do you need?</i>',
+  title:'Farmer',
+  text:'<i>Farmer: How can I help?</i>',
   choices:[
     {
-      text:'Buy Animal Pelts',
+      text:'Buy Fruit & Veg',
       index:18
     },
     {
@@ -268,8 +268,8 @@ var startingTown = [
   ]
 },
 {
-  title:'Hunter',
-  text:'Purchased Animal Pelts',
+  title:'Farmer',
+  text:'Purchased Fruit & Veg',
   choices:[
     {
       text:'Back',
@@ -278,7 +278,7 @@ var startingTown = [
   ]
 },
 {
-  title:'Hunter',
+  title:'Farmer',
   text:'Purchased Meat',
   choices:[
     {
@@ -288,15 +288,15 @@ var startingTown = [
   ]
 },
 {
-  title:'Farmer',
-  text:'<i>Farmer: How can I help?</i>',
+  title:'Material Supplier',
+  text:'<i>Material Supplier: What do you need?</i>',
   choices:[
     {
-      text:'Buy Fruit & Veg',
+      text:'Buy Wood Bundles',
       index:21
     },
     {
-      text:'Buy Wheat',
+      text:'Buy Ores',
       index:22
     },
     {
@@ -306,7 +306,7 @@ var startingTown = [
   ]
 },
 {
-  title:'Farmer',
+  title:'Material Supplier',
   text:'Purchased Fruit & Veg',
   choices:[
     {
@@ -316,7 +316,7 @@ var startingTown = [
   ]
 },
 {
-  title:'Farmer',
+  title:'Material Supplier',
   text:'Purchased Wheats',
   choices:[
     {
@@ -368,7 +368,7 @@ var startingTown = [
   text:'What to sell?',
   choices:[
     {
-      text:'Sell Animal Pelts',
+      text:'Sell Fruit & Veg',
       index:27
     },
     {
@@ -376,11 +376,11 @@ var startingTown = [
       index:28
     },
     {
-      text:'Sell Fruit & Veg',
+      text:'Sell Wood Bundles',
       index:29
     },
     {
-      text:'Sell Wheat',
+      text:'Sell Ores',
       index:30
     },
     {
@@ -399,7 +399,7 @@ var startingTown = [
 },
 {
   title:'Trading Company',
-  text:'Sold Animal Pelts',
+  text:'Sold Fruit & Veg',
   choices:[
     {
       text:'Back',
@@ -531,6 +531,18 @@ var startingTown = [
   ]
 },
 
+{
+  title:'Milestone One',
+  text:'You have successfully earned 1000 Dauns. You have bought the rights to a shop license. You now need land to build your shop. There is an empty plot on the high street. You need 3000 Dauns to pay for it.',
+  choices:[
+    {
+      text:'Next',
+      index:16
+    },
+
+  ]
+},
+
 ]
 
 
@@ -540,6 +552,42 @@ var marketNews = [
   {
     headline:'Early Winter',
     article:'Winter has come early in the North.',
+  },
+  {
+    headline:'Harvest Festival',
+    article:'Harvest Festival is next week. Demand for Fruit & Veg is to go up',
+  },
+  {
+    headline:'Going Vegetarian',
+    article:'It is forecasted that the Harvest Festival will caused a drop in demand of meat. Therefore, creating an abundance of meat supply',
+  },
+  {
+    headline:'Over Doing the Festivities',
+    article:'This Harvest Festival will be bigger than expected. Fruit & Veg supply will be low.',
+  },
+  {
+    headline:'Craving the Meat',
+    article:'With the Harvest Festival over, it is expected that meat demand will be high and rise for the next three weeks.',
+  },
+  {
+    headline:'Eating the Meat (or "Meating" as We\'re Calling it)',
+    article:'Meat demand has risen and still to keep rising.',
+  },
+  {
+    headline:'Meating Continues',
+    article:'Meat demand has risen and still to keep rising. Fruit & Veg prices are to return to normal.',
+  },
+  {
+    headline:'Meating Season Coming to an End',
+    article:'Demand for meat is to return to normal next week.',
+  },
+  {
+    headline:'A Quick Diet',
+    article:'Fruit & veg Prices demand to rise, increasing prices. Why? Maybe because all of the meat that was consumed.',
+  },
+  {
+    headline:'Quiet Week',
+    article:'No changes forecast for next week',
   },
   {
     headline:'Dry Season',
