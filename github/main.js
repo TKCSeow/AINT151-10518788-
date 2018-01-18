@@ -85,7 +85,6 @@ function DisplayPerk()
   }
 }
 
-
 function OnGameLoad()
 {
 	var playerName = localStorage.getItem("playername");
@@ -208,9 +207,18 @@ function Transactions(index)
 {
     TutorialTransactions(index);
 
+    if (index == 17 || index == 18 || index == 19 || index == 27 || index == 28)
+    {
     FarmerTransactions(index);
-    MaterialSupplierTransactions(index);
-    BlacksmithTransactions(index);
+    }
+    if (index == 20 || index == 21 || index == 22 || index == 29 || index == 30)
+    {
+      MaterialSupplierTransactions(index);
+    }
+    if (index == 23 || index == 24 || index == 25 || index == 31 || index == 32)
+    {
+      BlacksmithTransactions(index);
+    }
 
 }
 
