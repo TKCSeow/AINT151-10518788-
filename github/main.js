@@ -119,65 +119,142 @@ function ChangeText(index)
 	UpdateInventory();
 	UpdatePrices();
 
-	document.getElementById('roomChoices').innerHTML = "";
+  ChangeChoices(index);
 
-	for(var i = 0; i < startingTown[index].choices.length; i++)
-	{
-		var tag = "<button class=\"Next\" onClick=\"ChangeText(" + startingTown[index].choices[i].index + ")\">" + startingTown[index].choices[i].text + "</button>";
-		document.getElementById('roomChoices').innerHTML += tag;
-	}
 
-	document.getElementById('title').innerHTML = startingTown[index].title
+	document.getElementById('title').innerHTML = mainData[index].title;
 
-	document.getElementById('text').innerHTML = startingTown[index].text
+	document.getElementById('text').innerHTML = mainData[index].text;
 
 	document.getElementById('Week').innerHTML = "Week: " + String(stats[1].week);
 
-	document.getElementById('Money').innerHTML = String(stats[0].Money) + " Dauns"
+	document.getElementById('Money').innerHTML = String(stats[0].Money) + " Dauns";
 
+}
+
+function ChangeChoices(index)
+{
+  document.getElementById('roomChoices').innerHTML = "";
+
+  if (stats[1].week < 11 && index == 16)
+  {
+    var tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[3].index + ")\">" + mainData[index].choices[3].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[4].index + ")\">" + mainData[index].choices[4].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+  }
+  else if (stats[1].week < 11 && index == 26)
+  {
+    var tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[1].index + ")\">" + mainData[index].choices[1].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[6].index + ")\">" + mainData[index].choices[6].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+  }
+  else if (stats[1].week < 21 && index == 16)
+  {
+    var tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[1].index + ")\">" + mainData[index].choices[1].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[3].index + ")\">" + mainData[index].choices[3].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[4].index + ")\">" + mainData[index].choices[4].text + "</button>";
+		document.getElementById('roomChoices').innerHTML += tag;
+  }
+  else if (stats[1].week < 21 && index == 26)
+  {
+    var tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[1].index + ")\">" + mainData[index].choices[1].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[2].index + ")\">" + mainData[index].choices[2].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[3].index + ")\">" + mainData[index].choices[3].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+    tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[6].index + ")\">" + mainData[index].choices[6].text + "</button>";
+    document.getElementById('roomChoices').innerHTML += tag;
+  }
+  else
+	{
+    for(var i = 0; i < mainData[index].choices.length; i++)
+	   {
+		     var tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[i].index + ")\">" + mainData[index].choices[i].text + "</button>";
+		     document.getElementById('roomChoices').innerHTML += tag;
+	   }
+  }
 }
 
 //Neccessary stuff
 function EventsAndResets(index)
 {
-  if (stats[1].week == 10 && stats[0].Money >= 1000)
-  {
-    startingTown[16].choices[4].index = 39;
-    startingTown[33].choices[4].index = 39;
-  }
-
-  if (stats[1].week == 10 && stats[0].Money < 1000)
-  {
-    startingTown[16].choices[4].index = 38;
-    startingTown[33].choices[1].index = 38;
-  }
 
 
-  if (index == 34 || index == 13 || index == 39)
+  if (index == 34 || index == 13 || index == 39 || index == 40)
 	{
 		stats[1].week += 1;
 	}
 
 	if (index == 0)
 	{
-		stats[0].Money = 300;
-    startingTown[16].choices[4].index = 34;
+		stats[0].Money = 300000;
+    mainData[16].choices[4].index = 34;
+    mainData[33].choices[1].index = 34;
     stats[1].week = 0;
     ResetPrices();
 	}
 
 	if (index == 16)
 	{
-		startingTown[26].choices[6] = {text:'Back', index:16};
+		mainData[26].choices[6] = {text:'Back', index:16};
 
 	}
 
   if (index == 39)
 	{
     stats[0].Money -= 1000;
-    startingTown[16].choices[4].index = 34;
-    startingTown[33].choices[1].index = 16;
+    mainData[16].choices[4].index = 34;
+    mainData[33].choices[1].index = 34;
 	}
+
+  if (index == 40)
+	{
+    stats[0].Money -= 3000;
+    mainData[16].choices[4].index = 34;
+    mainData[33].choices[1].index = 34;
+	}
+
+  if (stats[1].week == 10 && stats[0].Money >= 1000)
+  {
+    mainData[16].choices[4].index = 39;
+    mainData[33].choices[1].index = 39;
+  }
+
+  if (stats[1].week == 20 && stats[0].Money >= 3000)
+  {
+    mainData[16].choices[4].index = 40;
+    mainData[33].choices[1].index = 40;
+  }
+
+  if (stats[1].week == 30 && stats[0].Money >= 6000)
+  {
+    mainData[16].choices[4].index = 37;
+    mainData[33].choices[1].index = 37;
+  }
+
+  //Game Over
+  if (stats[1].week == 10 && stats[0].Money < 1000 || stats[1].week == 20 && stats[0].Money < 3000 || stats[1].week == 30 && stats[0].Money < 6000 )
+  {
+    mainData[16].choices[4].index = 38;
+    mainData[33].choices[1].index = 38;
+  }
 
 }
 
@@ -193,12 +270,12 @@ function UpdatePurchases(index)
 
   if (purchaseCounter == 3)
   {
-    startingTown[18].choices[0].index = 17;
-    startingTown[19].choices[0].index = 17;
-    startingTown[21].choices[0].index = 20;
-    startingTown[22].choices[0].index = 20;
-    startingTown[24].choices[0].index = 23;
-    startingTown[25].choices[0].index = 23;
+    mainData[18].choices[0].index = 17;
+    mainData[19].choices[0].index = 17;
+    mainData[21].choices[0].index = 20;
+    mainData[22].choices[0].index = 20;
+    mainData[24].choices[0].index = 23;
+    mainData[25].choices[0].index = 23;
   }
 }
 
@@ -264,8 +341,8 @@ function FarmerTransactions(index)
 			purchaseCounter++;
       if (purchaseCounter == 3)
       {
-        startingTown[26].choices[6].index = 33;
-        startingTown[18].choices[0].index = 33;
+        mainData[26].choices[6].index = 33;
+        mainData[18].choices[0].index = 33;
       }
 		}
 
@@ -287,21 +364,21 @@ function FarmerTransactions(index)
 	//Buy-error
 	if (stats[0].Money < Inventory[0].buyPrice)
 	{
-		startingTown[17].choices[0].index = 36;
-		startingTown[36].choices[0].index = 17;
+		mainData[17].choices[0].index = 36;
+		mainData[36].choices[0].index = 17;
 	}
 	else if (stats[0].Money >= Inventory[0].buyPrice)
 	{
-		startingTown[17].choices[0].index = 18;
+		mainData[17].choices[0].index = 18;
 	}
 	//Sell-error
 		if (Inventory[0].amount == 0)
 		{
-			startingTown[26].choices[0].index = 35;
+			mainData[26].choices[0].index = 35;
 		}
 		else if (Inventory[0].amount > 0)
 		{
-			startingTown[26].choices[0].index = 27;
+			mainData[26].choices[0].index = 27;
 		}
 
 		//Meats
@@ -320,8 +397,8 @@ function FarmerTransactions(index)
         purchaseCounter++;
         if (purchaseCounter == 3)
         {
-          startingTown[26].choices[6].index = 33;
-          startingTown[19].choices[0].index = 33;
+          mainData[26].choices[6].index = 33;
+          mainData[19].choices[0].index = 33;
         }
 			}
 		//Sell
@@ -341,21 +418,21 @@ function FarmerTransactions(index)
 		//Buy-error
 		if (stats[0].Money < Inventory[1].buyPrice)
 		{
-			startingTown[17].choices[1].index = 36;
-			startingTown[36].choices[0].index = 17;
+			mainData[17].choices[1].index = 36;
+			mainData[36].choices[0].index = 17;
 		}
 		else if (stats[0].Money >= Inventory[1].buyPrice)
 		{
-			startingTown[17].choices[1].index = 19;
+			mainData[17].choices[1].index = 19;
 		}
 		//Sell-error
 			if (Inventory[1].amount == 0)
 			{
-				startingTown[26].choices[1].index = 35;
+				mainData[26].choices[1].index = 35;
 			}
 			else if (Inventory[1].amount > 0)
 			{
-				startingTown[26].choices[1].index = 28;
+				mainData[26].choices[1].index = 28;
 			}
 }
 
@@ -378,8 +455,8 @@ function MaterialSupplierTransactions(index)
       purchaseCounter++;
       if (purchaseCounter == 3)
       {
-        startingTown[26].choices[6].index = 33;
-        startingTown[21].choices[0].index = 33;
+        mainData[26].choices[6].index = 33;
+        mainData[21].choices[0].index = 33;
       }
 		}
 	//Sell
@@ -399,21 +476,21 @@ function MaterialSupplierTransactions(index)
 	//Buy-error
 	if (stats[0].Money < Inventory[2].buyPrice)
 	{
-		startingTown[20].choices[0].index = 36;
-		startingTown[36].choices[0].index = 20;
+		mainData[20].choices[0].index = 36;
+		mainData[36].choices[0].index = 20;
 	}
 	else if (stats[0].Money >= Inventory[2].buyPrice)
 	{
-		startingTown[20].choices[0].index = 21;
+		mainData[20].choices[0].index = 21;
 	}
 	//Sell-error
 	if (Inventory[2].amount == 0)
 	{
-			startingTown[26].choices[2].index = 35;
+			mainData[26].choices[2].index = 35;
 	}
 	else if (Inventory[2].amount > 0)
 	{
-			startingTown[26].choices[2].index = 29;
+			mainData[26].choices[2].index = 29;
 	}
 
 	//Wheat
@@ -432,8 +509,8 @@ function MaterialSupplierTransactions(index)
       purchaseCounter++;
       if (purchaseCounter == 3)
       {
-        startingTown[26].choices[6].index = 33;
-        startingTown[22].choices[0].index = 33;
+        mainData[26].choices[6].index = 33;
+        mainData[22].choices[0].index = 33;
       }
 		}
 	//Sell
@@ -453,21 +530,21 @@ function MaterialSupplierTransactions(index)
 	//Buy-error
 	if (stats[0].Money < Inventory[3].buyPrice)
 	{
-		startingTown[20].choices[1].index = 36;
-		startingTown[36].choices[0].index = 20;
+		mainData[20].choices[1].index = 36;
+		mainData[36].choices[0].index = 20;
 	}
 	else if (stats[0].Money >= Inventory[3].buyPrice)
 	{
-		startingTown[20].choices[1].index = 22;
+		mainData[20].choices[1].index = 22;
 	}
 	//Sell-error
 		if (Inventory[3].amount == 0)
 		{
-			startingTown[26].choices[3].index = 35;
+			mainData[26].choices[3].index = 35;
 		}
 		else if (Inventory[3].amount > 0)
 		{
-			startingTown[26].choices[3].index = 30;
+			mainData[26].choices[3].index = 30;
 		}
 }
 
@@ -490,8 +567,8 @@ function BlacksmithTransactions(index)
       purchaseCounter++;
       if (purchaseCounter == 3)
       {
-        startingTown[26].choices[6].index = 33;
-        startingTown[24].choices[0].index = 33;
+        mainData[26].choices[6].index = 33;
+        mainData[24].choices[0].index = 33;
       }
 		}
 	//Sell
@@ -511,21 +588,21 @@ function BlacksmithTransactions(index)
 	//Buy-error
 	if (stats[0].Money < Inventory[4].buyPrice)
 	{
-		startingTown[23].choices[0].index = 36;
-		startingTown[36].choices[0].index = 23;
+		mainData[23].choices[0].index = 36;
+		mainData[36].choices[0].index = 23;
 	}
 	else if (stats[0].Money >= Inventory[4].buyPrice)
 	{
-		startingTown[23].choices[0].index = 24;
+		mainData[23].choices[0].index = 24;
 	}
 	//Sell-error
 	if (Inventory[4].amount == 0)
 	{
-			startingTown[26].choices[4].index = 35;
+			mainData[26].choices[4].index = 35;
 	}
 	else if (Inventory[4].amount > 0)
 	{
-			startingTown[26].choices[4].index = 31;
+			mainData[26].choices[4].index = 31;
 	}
 
 	//Weapons
@@ -544,8 +621,8 @@ function BlacksmithTransactions(index)
       purchaseCounter++;
       if (purchaseCounter == 3)
       {
-        startingTown[26].choices[6].index = 33;
-        startingTown[25].choices[0].index = 33;
+        mainData[26].choices[6].index = 33;
+        mainData[25].choices[0].index = 33;
       }
 		}
 	//Sell
@@ -565,21 +642,21 @@ function BlacksmithTransactions(index)
 	//Buy-error
 	if (stats[0].Money < Inventory[5].buyPrice)
 	{
-		startingTown[23].choices[1].index = 36;
-		startingTown[36].choices[0].index = 23;
+		mainData[23].choices[1].index = 36;
+		mainData[36].choices[0].index = 23;
 	}
 	else if (stats[0].Money >= Inventory[5].buyPrice)
 	{
-		startingTown[23].choices[1].index = 25;
+		mainData[23].choices[1].index = 25;
 	}
 	//Sell-error
 		if (Inventory[5].amount == 0)
 		{
-			startingTown[26].choices[5].index = 35;
+			mainData[26].choices[5].index = 35;
 		}
 		else if (Inventory[5].amount > 0)
 		{
-			startingTown[26].choices[5].index = 32;
+			mainData[26].choices[5].index = 32;
 		}
 }
 
@@ -641,12 +718,87 @@ function WeekEvents()
 
   if (stats[1].week == 12)
 	{
-
+    Inventory[3].buyPrice = 200;
 	}
-  if (stats[1].week == 9)
+
+  if (stats[1].week == 13)
 	{
-
+    Inventory[2].buyPrice = 290;
+    Inventory[2].sellPrice = 370;
 	}
+  if (stats[1].week == 14)
+  {
+    Inventory[2].buyPrice = 350;
+    Inventory[2].sellPrice = 430;
+
+    Inventory[3].buyPrice = 280;
+  }
+  if (stats[1].week == 15)
+  {
+    Inventory[2].buyPrice = 390;
+    Inventory[2].sellPrice = 470;
+
+    Inventory[3].buyPrice = 420;
+    Inventory[3].sellPrice = 550;
+  }
+  if (stats[1].week == 16)
+  {
+    Inventory[2].buyPrice = 240;
+    Inventory[2].sellPrice = 320;
+  }
+  if (stats[1].week == 17)
+  {
+    Inventory[2].buyPrice = 150;
+    Inventory[2].sellPrice = 300;
+  }
+  if (stats[1].week == 18)
+  {
+    Inventory[3].buyPrice = 280;
+    Inventory[3].sellPrice = 100;
+  }
+  if (stats[1].week == 20)
+  {
+    Inventory[2].buyPrice = 240;
+    Inventory[2].sellPrice = 320;
+
+    Inventory[3].buyPrice = 280;
+    Inventory[3].sellPrice = 360;
+  }
+  if (stats[1].week == 22)
+  {
+    Inventory[4].buyPrice = 1100;
+    Inventory[4].sellPrice = 1300;
+  }
+  if (stats[1].week == 23)
+  {
+    Inventory[4].buyPrice = 1200;
+    Inventory[4].sellPrice = 1400;
+
+    Inventory[5].buyPrice = 800;
+    Inventory[5].sellPrice = 1050;
+  }
+  if (stats[1].week == 24)
+  {
+    Inventory[4].buyPrice = 1300;
+    Inventory[4].sellPrice = 1500;
+  }
+  if (stats[1].week == 25)
+  {
+    Inventory[4].buyPrice = 1000;
+    Inventory[4].sellPrice = 1200;
+
+    Inventory[5].buyPrice = 1250;
+    Inventory[5].sellPrice = 1500;
+  }
+  if (stats[1].week == 28)
+  {
+    Inventory[5].buyPrice = 1150;
+    Inventory[5].sellPrice = 500;
+  }
+  if (stats[1].week == 40)
+  {
+    Inventory[5].sellPrice = 1350;
+  }
 }
 
 //Create Inventory tags
@@ -668,15 +820,33 @@ function InventoryText()
 //Update Inventory tags
 function UpdateInventory()
 {
-	for(var i = 0; i < Inventory.length; i++)
-	{
-		var itemName = "itemSlot" + String(i);
+  if (stats[1].week < 11)
+  {
+    for(var i = 0; i < 2; i++)
+  	{
+  		 var itemName = "itemSlot" + String(i);
 
+  	   document.getElementById(itemName).innerHTML = Inventory[i].itemName + ": " + String(Inventory[i].amount);
+  	}
+  }
+  else if (stats[1].week < 21)
+  {
+    for(var i = 0; i < 4; i++)
+  	{
+  		 var itemName = "itemSlot" + String(i);
 
-	document.getElementById(itemName).innerHTML = Inventory[i].itemName + ": " + String(Inventory[i].amount);
+  	   document.getElementById(itemName).innerHTML = Inventory[i].itemName + ": " + String(Inventory[i].amount);
+  	}
+  }
+  else
+  {
+    for(var i = 0; i < Inventory.length; i++)
+  	{
+  		 var itemName = "itemSlot" + String(i);
 
-
-	}
+  	   document.getElementById(itemName).innerHTML = Inventory[i].itemName + ": " + String(Inventory[i].amount);
+  	}
+  }
 }
 
 //Create Prices tags
@@ -702,17 +872,46 @@ function PricesText()
 //Update Prices tags
 function UpdatePrices()
 {
-	for(var i = 0; i < Inventory.length; i++)
-	{
-		var itemName = "itemName1" + String(i);
-		var buy = "Buy" + String(i);
-		var sell = "Sell" + String(i);
+  if (stats[1].week < 11)
+  {
+    for(var i = 0; i < 2; i++)
+    {
+      var itemName = "itemName1" + String(i);
+      var buy = "Buy" + String(i);
+      var sell = "Sell" + String(i);
 
-	document.getElementById(itemName).innerHTML = "<br><u>" + Inventory[i].itemName + "<u>";
-	document.getElementById(buy).innerHTML = "Buy: " + String(Inventory[i].buyPrice)
-	document.getElementById(sell).innerHTML = "Sell: " + String(Inventory[i].sellPrice)
+      document.getElementById(itemName).innerHTML = "<br><u>" + Inventory[i].itemName + "<u>";
+      document.getElementById(buy).innerHTML = "Buy: " + String(Inventory[i].buyPrice)
+      document.getElementById(sell).innerHTML = "Sell: " + String(Inventory[i].sellPrice)
+    }
+  }
+  else if (stats[1].week < 21)
+  {
+    for(var i = 0; i < 4; i++)
+    {
+      var itemName = "itemName1" + String(i);
+      var buy = "Buy" + String(i);
+      var sell = "Sell" + String(i);
 
-	}
+      document.getElementById(itemName).innerHTML = "<br><u>" + Inventory[i].itemName + "<u>";
+      document.getElementById(buy).innerHTML = "Buy: " + String(Inventory[i].buyPrice)
+      document.getElementById(sell).innerHTML = "Sell: " + String(Inventory[i].sellPrice)
+    }
+  }
+  else
+  {
+      for(var i = 0; i < Inventory.length; i++)
+  	{
+  		var itemName = "itemName1" + String(i);
+  		var buy = "Buy" + String(i);
+  		var sell = "Sell" + String(i);
+
+  	  document.getElementById(itemName).innerHTML = "<br><u>" + Inventory[i].itemName + "<u>";
+  	  document.getElementById(buy).innerHTML = "Buy: " + String(Inventory[i].buyPrice)
+  	  document.getElementById(sell).innerHTML = "Sell: " + String(Inventory[i].sellPrice)
+
+  	}
+  }
 }
 
 //Update Market News
@@ -733,13 +932,13 @@ function ResetPrices()
   Inventory[1].buyPrice = 30;
   Inventory[1].sellPrice = 50;
   Inventory[2].buyPrice = 240;
-  Inventory[2].sellPrice = 300;
-  Inventory[3].buyPrice = 360;
-  Inventory[3].sellPrice = 420;
-  Inventory[4].buyPrice = 1100;
-	Inventory[4].sellPrice = 1400;
-  Inventory[5].buyPrice = 1500;
-	Inventory[5].sellPrice = 1800;
+  Inventory[2].sellPrice = 320;
+  Inventory[3].buyPrice = 280;
+  Inventory[3].sellPrice = 360;
+  Inventory[4].buyPrice = 1000;
+	Inventory[4].sellPrice = 1200;
+  Inventory[5].buyPrice = 1150;
+	Inventory[5].sellPrice = 1350;
 }
 
 //Display image based on index

@@ -46,7 +46,7 @@ var Inventory = [
   },
 ]
 
-var startingTown = [
+var mainData = [
 {
   title:'Intro',
   text:'You have always wanted to open your own shop. </br>You have 100 Dauns to pursue the dream. Amass 1,000 Dauns in 10 weeks. You can only make only purchase per week, but you can sell how many times you want.',

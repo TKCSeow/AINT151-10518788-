@@ -46,7 +46,7 @@ var Inventory = [
   },
 ]
 
-var startingTown = [
+var mainData = [
 {
   title:'Intro',
   text:'You have always wanted to open your own shop. </br>You have 300 Dauns to pursue the dream. Amass 10,000 Dauns in 30 weeks. <br>First you need to register with the Merchant Guild',

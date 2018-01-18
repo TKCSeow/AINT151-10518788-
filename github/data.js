@@ -24,29 +24,29 @@ var Inventory = [
     itemName: 'Wood Bundles',
     amount: 0,
     buyPrice:240,
-    sellPrice:300,
+    sellPrice:320,
   },
   {
     itemName: 'Ores',
     amount: 0,
-    buyPrice:360,
-    sellPrice:420,
+    buyPrice:280,
+    sellPrice:360,
   },
   {
     itemName: 'Tools',
     amount: 0,
     buyPrice:1100,
-    sellPrice:1400,
+    sellPrice:1200,
   },
   {
     itemName: 'Weapons',
     amount: 0,
-    buyPrice:1500,
-    sellPrice:1800,
+    buyPrice:1150,
+    sellPrice:1350,
   },
 ]
 
-var startingTown = [
+var mainData = [
 {
   title:'Intro',
   text:'You have always wanted to open your own shop. </br>You have 300 Dauns to pursue the dream. Amass 10,000 Dauns in 30 weeks. <br>First you need to register with the Merchant Guild',
@@ -213,7 +213,7 @@ var startingTown = [
 
 {
   title:'Merchant Guild',
-  text:'From now on you are on your own. You have 10 weeks to make 1000 Dauns to buy a shop license.',
+  text:'From now on you are on your own. You have 10 weeks to make 1000 Dauns to buy a shop license. Right now only the Farmer is available, more will be unlocked later.',
   choices:[
     {
       text:'Next',
@@ -307,7 +307,7 @@ var startingTown = [
 },
 {
   title:'Material Supplier',
-  text:'Purchased Fruit & Veg',
+  text:'Purchased Wood Bundles',
   choices:[
     {
       text:'Back',
@@ -317,7 +317,7 @@ var startingTown = [
 },
 {
   title:'Material Supplier',
-  text:'Purchased Wheats',
+  text:'Purchased Ores',
   choices:[
     {
       text:'Back',
@@ -533,7 +533,19 @@ var startingTown = [
 
 {
   title:'Milestone One',
-  text:'You have successfully earned 1000 Dauns. You have bought the rights to a shop license. You now need land to build your shop. There is an empty plot on the high street. You need 3000 Dauns to pay for it.',
+  text:'You have successfully earned 1000 Dauns. You have bought the rights to a shop license. You now need land to build your shop. There is an empty plot on the high street. You need 3000 Dauns to pay for it. (Material Supplier now available)',
+  choices:[
+    {
+      text:'Next',
+      index:16
+    },
+
+  ]
+},
+
+{
+  title:'Milestone Two',
+  text:'You have successfully earned 3000 Dauns. You have bought the land to build your shop. You now need 6000 Dauns to build your shop. (Blacksmith now available)',
   choices:[
     {
       text:'Next',
@@ -574,7 +586,7 @@ var marketNews = [
     article:'Meat demand has risen and still to keep rising.',
   },
   {
-    headline:'Meating Continues',
+    headline:'The Meating Continues',
     article:'Meat demand has risen and still to keep rising. Fruit & Veg prices are to return to normal.',
   },
   {
@@ -587,42 +599,91 @@ var marketNews = [
   },
   {
     headline:'Quiet Week',
-    article:'No changes forecast for next week',
+    article:'No changes forecasted for next week',
   },
   {
-    headline:'Dry Season',
-    article:'Due to lack of rain, wheat is forecasted to be under supplied.',
+    headline:'No Changes',
+    article:'Keep calm and carry on because nothing is happening.',
   },
   {
-    headline:'The King\'s Passing',
-    article:'The King\'s death has brought grief throughout the Kingdom. His funeral will be in 4 weeks',
+    headline:'Bringing in the Riches',
+    article:'The discovery of rich sources of ores will lead to an increase in supply making them cheaper to buy. This will continue for the coming weeks.',
   },
   {
-    headline:'Pesticide Horror!',
-    article:'Supplies of pesticide have found to been tampered! The Officals suspects the West.',
+    headline:'Winter has Finally Come',
+    article:'Wood prices are set to steadily rise for the next three weeks.',
   },
   {
-    headline:'The Royal Succession',
-    article:'The King\'s oldest son is to succeed the throne.',
+    headline:'Rich no More',
+    article:'Ore prices are to return to normal next week.',
   },
   {
-    headline:'Tension Rises',
-    article:'Tensions with the West has risen. <br>Meanwhile, infestations have caused a drop in crop supply',
+    headline:'Season of Gifts',
+    article:'It\'s the holiday season and luxury gifts like jewelry are expected to be in very high demand for a few weeks.',
   },
   {
-    headline:'King\'s Funeral',
-    article:'Today we honour the passing of the former king.',
+    headline:'Stowing the Wood',
+    article:'Demand of wood is to return to normal next week.',
   },
   {
-    headline:'Kingdom Cut Ties with the West',
-    article:'Trade with the west has been cut, affecting exports and imports.',
+    headline:'Hot Winter',
+    article:'This Winter has been warmer than usual causing a abundance of wood supply. Buy prices are set to be low for a while.',
   },
   {
-    headline:'New King\'s Coronation Ceremony Announced',
-    article:'The New King will be crowned in 4 weeks',
+    headline:'Scandal Pending',
+    article:'It has been discovered that jewelers have been purposely selling highly impure jewelry without disclosing that it is. Sell any ores you may have as they will become near worthless once this news reaches the public.',
   },
   {
-    headline:'War Declared!',
-    article:'War has broken out with the neighbouring country.',
+    headline:'The Impure Jewels',
+    article:'Ores demand has dropped and prices have lowered. This will continue into next week. Meanwhile wood supply is still high.',
+  },
+  {
+    headline:'All Better',
+    article:'Wood and ore prices will return to normal next week.',
+  },
+
+  {
+    headline:'Did I Tell You There\'s a King? ',
+    article:'Well there is, and you live in a kingdom. Meanwhile the market remains stable.',
+  },
+  {
+    headline:'The King\'s Jubilee  Incoming',
+    article:'The King\'s Jubilee  is soon and in preparation craftmans are gearing up to produce their best works and will need new tools. This will go on for a few weeks with prices rising steadily.',
+  },
+  {
+    headline:'Peaceful Times',
+    article:'The Kingdom has been at peace for many years now. There couldn\'t be a better time to be alive. Supply for weapons are overflowing, buy prices are becoming low.',
+  },
+  {
+    headline:'Tooling Up',
+    article:'Demand for tools continues to rise. Though will return to normal the week after as the Jubilee is next week (pretty damn excited!).',
+  },
+  {
+    headline:'Jubilee Horror!',
+    article:'During the parade there was a assassination attempt on the King. The assassin was caught and it seems he came from the West. Tensions with the West has risen to alarming levels. War seems imminent.',
+  },
+  {
+    headline:'Tensions Still High',
+    article:'The West denies the assassination, investigations and talks continues.',
+  },
+  {
+    headline:'Conclusions are Being Made',
+    article:'While tensions remain high, a conclusion is soon to come.',
+  },
+  {
+    headline:'The Truth Not Yet Revealed',
+    article:'It turns out the assassination attempt was made by a Royal rebelist. The West had no involvement. Once the this news goes public weapons will become worthless. Sell them now!',
+  },
+  {
+    headline:'The Truth Revealed',
+    article:'The truth about the assassination has gone public, weapon prices has dropped and will be like this next week. The people are relieved there will be no war.',
+  },
+  {
+    headline:'Stuck in the Mud',
+    article:'Merchant are unable to sell weapons due to the large cost it will incur. Things are forecasted to return to normal next week.',
+  },
+  {
+    headline:'It\'s a Pleasant Day Today',
+    article:'The weather\'s good today and I\'m sick of writing the news. Have a good day, I hope you enjoyed the read.',
   },
 ]
