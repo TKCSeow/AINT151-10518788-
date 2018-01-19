@@ -1,0 +1,29 @@
+h1
+{
+  font-family: sans-serif;
+  color: green;
+}
+
+p
+{
+  color: grey;
+}
+
+img
+{
+  width: 100px;
+  border-style: dashed;
+  border-width: 5px;
+  border-color: blue;
+}
+
+ul
+{
+  width: 100px;
+}
+
+ul li
+{
+  padding: 0;
+  border: 1px solid black;
+}
