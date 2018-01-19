@@ -136,7 +136,7 @@ function ChangeChoices(index)
 {
   document.getElementById('roomChoices').innerHTML = "";
 
-  if (stats[1].week < 11 && index == 16)
+  if (stats[1].week < 11 && index == 16) //Show only Farmer (buy)
   {
     var tag;
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
@@ -146,7 +146,7 @@ function ChangeChoices(index)
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[4].index + ")\">" + mainData[index].choices[4].text + "</button>";
 		document.getElementById('roomChoices').innerHTML += tag;
   }
-  else if (stats[1].week < 11 && index == 26)
+  else if (stats[1].week < 11 && index == 26) //Show only Farmer (sell)
   {
     var tag;
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
@@ -156,7 +156,7 @@ function ChangeChoices(index)
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[6].index + ")\">" + mainData[index].choices[6].text + "</button>";
 		document.getElementById('roomChoices').innerHTML += tag;
   }
-  else if (stats[1].week < 21 && index == 16)
+  else if (stats[1].week < 21 && index == 16) //Show only Farmer and Material Supplier (buy)
   {
     var tag;
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
@@ -168,7 +168,7 @@ function ChangeChoices(index)
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[4].index + ")\">" + mainData[index].choices[4].text + "</button>";
 		document.getElementById('roomChoices').innerHTML += tag;
   }
-  else if (stats[1].week < 21 && index == 26)
+  else if (stats[1].week < 21 && index == 26) //Show only Farmer and Material Supplier (Sell)
   {
     var tag;
     tag = "<button class=\"Next\" onClick=\"ChangeText(" + mainData[index].choices[0].index + ")\">" + mainData[index].choices[0].text + "</button>";
@@ -195,20 +195,10 @@ function ChangeChoices(index)
 //Neccessary stuff
 function EventsAndResets(index)
 {
-
-
+  //Progress week
   if (index == 34 || index == 13 || index == 39 || index == 40)
 	{
 		stats[1].week += 1;
-	}
-
-	if (index == 0)
-	{
-		stats[0].Money = 300000;
-    mainData[16].choices[4].index = 34;
-    mainData[33].choices[1].index = 34;
-    stats[1].week = 0;
-    ResetPrices();
 	}
 
 	if (index == 16)
@@ -231,18 +221,19 @@ function EventsAndResets(index)
     mainData[33].choices[1].index = 34;
 	}
 
+  //Milestone One Condition
   if (stats[1].week == 10 && stats[0].Money >= 1000)
   {
     mainData[16].choices[4].index = 39;
     mainData[33].choices[1].index = 39;
   }
-
+  //Milestone Two Condition
   if (stats[1].week == 20 && stats[0].Money >= 3000)
   {
     mainData[16].choices[4].index = 40;
     mainData[33].choices[1].index = 40;
   }
-
+  //Ending Condition
   if (stats[1].week == 30 && stats[0].Money >= 6000)
   {
     mainData[16].choices[4].index = 37;
@@ -256,6 +247,15 @@ function EventsAndResets(index)
     mainData[33].choices[1].index = 38;
   }
 
+  //Resets when returning to beginning
+	if (index == 0)
+	{
+		stats[0].Money = 300;
+    mainData[16].choices[4].index = 34;
+    mainData[33].choices[1].index = 34;
+    stats[1].week = 0;
+    ResetPrices();
+	}
 }
 
 //Manages the purchase counter
@@ -716,6 +716,12 @@ function WeekEvents()
     Inventory[0].sellPrice = 70;
 	}
 
+  if (stats[1].week == 10)
+  {
+    Inventory[0].buyPrice = 20;
+    Inventory[0].sellPrice = 40;
+  }
+
   if (stats[1].week == 12)
 	{
     Inventory[3].buyPrice = 200;
@@ -946,27 +952,32 @@ function ChangeImage(index)
 {
   if (index == 16  || index == 33) //Merchant Guild
   {
-    var tag = "<img src=\"img/FM.png\" class=\"image\">"
+    var tag = "<img src=\"img/FM.png\" class=\"game-image\">"
     document.getElementById('Image').innerHTML = tag;
   }
   else if (index == 17) //Farmer
   {
-    var tag = "<img src=\"img/FF.png\" class=\"image\">"
+    var tag = "<img src=\"img/FF.png\" class=\"game-image\">"
     document.getElementById('Image').innerHTML = tag;
   }
   else if (index == 20) //Material Supplier
   {
-    var tag = "<img src=\"img/FH.png\" class=\"image\">"
+    var tag = "<img src=\"img/FH.png\" class=\"game-image\">"
     document.getElementById('Image').innerHTML = tag;
   }
   else if (index == 23) //Blacksmith
   {
-    var tag = "<img src=\"img/FB.png\" class=\"image\">"
+    var tag = "<img src=\"img/FB.png\" class=\"game-image\">"
     document.getElementById('Image').innerHTML = tag;
   }
   else if (index == 26) //Trading Company
   {
-    var tag = "<img src=\"img/FT.png\" class=\"image\">"
+    var tag = "<img src=\"img/FT.png\" class=\"game-image\">"
+    document.getElementById('Image').innerHTML = tag;
+  }
+  else if (index == 37 || index == 38 || index == 39 || index == 40)
+  {
+    var tag = ""
     document.getElementById('Image').innerHTML = tag;
   }
 

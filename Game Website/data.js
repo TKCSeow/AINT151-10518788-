@@ -35,7 +35,7 @@ var Inventory = [
   {
     itemName: 'Tools',
     amount: 0,
-    buyPrice:1100,
+    buyPrice:1000,
     sellPrice:1200,
   },
   {
@@ -599,7 +599,7 @@ var marketNews = [
   },
   {
     headline:'Quiet Week',
-    article:'No changes forecasted for next week',
+    article:'Prices to return to normal next week',
   },
   {
     headline:'No Changes',
